@@ -261,8 +261,8 @@ export default function Home() {
                   }}>
                   Get In Touch
                 </Link>
-                <Link 
-                  href="/services" 
+                <a 
+                  href="#services"
                   onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = colors.gold; e.currentTarget.style.color = colors.darker; }}
                   onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = colors.white; }}
                   style={{
@@ -276,9 +276,10 @@ export default function Home() {
                     textDecoration: 'none',
                     transition: 'all 0.3s ease',
                     display: 'inline-block',
+                    cursor: 'pointer',
                   }}>
                   Explore Services
-                </Link>
+                </a>
               </div>
             </div>
 
@@ -338,7 +339,7 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section style={{ padding: '80px 60px', background: colors.dark }}>
+        <section id="services" style={{ padding: '80px 60px', background: colors.dark }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '32px' }}>
               <span style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: colors.pink, marginBottom: '8px', display: 'block' }}>
@@ -562,95 +563,94 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section style={{ 
-          padding: '120px 60px', 
-          background: colors.darker,
-          textAlign: 'center',
-          position: 'relative',
-        }}>
-          <div style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '500px',
-            height: '500px',
-            background: `radial-gradient(circle, ${colors.gold}20 0%, transparent 60%)`,
-            filter: 'blur(60px)',
-          }} />
-          
-          <div style={{ position: 'relative', zIndex: 2, maxWidth: '700px', margin: '0 auto' }}>
-            <h2 style={{ 
-              fontFamily: "'Playfair Display', serif", 
-              fontSize: 'clamp(36px, 5vw, 52px)', 
-              color: colors.white,
-              marginBottom: '20px',
-            }}>
-              Begin Your <span style={{ color: colors.gold }}>Transformation</span>
-            </h2>
-            <p style={{ 
-              fontSize: '16px', 
-              color: colors.muted, 
-              marginBottom: '40px',
-              lineHeight: 1.8,
-            }}>
-              Your journey to radiance starts with a single step. Book your appointment today and let us craft your perfect moment.
-            </p>
-            <Link href="/contact" 
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(232,138,159,0.4)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
-              style={{
-              display: 'inline-block',
-              background: colors.pink,
-              color: colors.darker,
-              padding: '18px 48px',
-              borderRadius: '40px',
-              fontSize: '16px',
-              fontWeight: 600,
-              textDecoration: 'none',
-              transition: 'all 0.3s ease',
-            }}>
-              Book Appointment
-            </Link>
+        {/* Reviews Section */}
+        <section style={{ padding: '80px 60px', background: colors.dark }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+              <span style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: colors.pink, marginBottom: '12px', display: 'block' }}>
+                Testimonials
+              </span>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 4vw, 40px)', color: colors.white }}>
+                Customer <span style={{ color: colors.gold }}>Reviews</span>
+              </h2>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+              {[
+                { name: "Sarah Ahmed", text: "Amazing experience! The bridal makeup was flawless. The team at FEmmE made me look like a princess on my big day.", rating: 5, avatar: "/images/photo-1737515008725-8ce038ff5955.avif" },
+                { name: "Fatima Khan", text: "Best beauty salon in Sylhet. Professional staff and excellent services. Highly recommended!", rating: 5, avatar: "/images/premium_photo-1703483854398-93409ce5a9d9.avif" },
+                { name: "Ayesha Rahman", text: "Love the ambiance and the staff. My facial treatment was relaxing and the results are amazing.", rating: 5, avatar: "/images/2a45382ff49b2d7afd925c17839187c2.jpg" },
+              ].map((review, i) => (
+                <div key={i} style={{
+                  background: colors.purple,
+                  padding: '28px',
+                  borderRadius: '16px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '16px',
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div style={{ display: 'flex', gap: '4px' }}>
+                      {[...Array(review.rating)].map((_, j) => (
+                        <span key={j} style={{ color: colors.gold, fontSize: '16px' }}>★</span>
+                      ))}
+                    </div>
+                    <img 
+                      src={review.avatar} 
+                      alt={review.name}
+                      style={{
+                        width: '48px',
+                        height: '48px',
+                        borderRadius: '50%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  </div>
+                  <p style={{ fontSize: '14px', color: colors.muted, lineHeight: 1.7, fontStyle: 'italic' }}>
+                    "{review.text}"
+                  </p>
+                  <p style={{ fontSize: '14px', color: colors.white, fontWeight: 500 }}>{review.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* Contact Section */}
-        <section style={{ padding: '120px 60px', background: colors.dark }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-              <span style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: colors.pink, marginBottom: '16px', display: 'block' }}>
+        <section style={{ padding: '80px 60px', background: colors.dark }}>
+          <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+              <span style={{ fontSize: '12px', letterSpacing: '3px', textTransform: 'uppercase', color: colors.pink, marginBottom: '8px', display: 'block' }}>
                 Get In Touch
               </span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px, 5vw, 48px)', color: colors.white }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 4vw, 38px)', color: colors.white }}>
                 Reach Out to Us
               </h2>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
-              <div>
-                <h3 style={{ fontSize: '20px', color: colors.pink, marginBottom: '24px' }}>Send a Message</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignItems: 'start' }}>
+              <div style={{ background: colors.purple, padding: '20px', borderRadius: '12px' }}>
+                <h3 style={{ fontSize: '16px', color: colors.pink, marginBottom: '12px' }}>Send a Message</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <input type="text" placeholder="Your Name" style={{ 
-                    padding: '16px 20px', 
-                    borderRadius: '12px', 
+                    padding: '10px 12px', 
+                    borderRadius: '6px', 
                     border: '1px solid #333',
                     background: colors.darker,
                     color: colors.white,
                     fontSize: '14px',
                   }} />
                   <input type="email" placeholder="Your Email" style={{ 
-                    padding: '16px 20px', 
-                    borderRadius: '12px', 
+                    padding: '10px 12px', 
+                    borderRadius: '6px', 
                     border: '1px solid #333',
                     background: colors.darker,
                     color: colors.white,
                     fontSize: '14px',
                   }} />
-                  <textarea placeholder="Your Message" rows={4} style={{ 
-                    padding: '16px 20px', 
-                    borderRadius: '12px', 
+                  <textarea placeholder="Your Message" rows={2} style={{ 
+                    padding: '10px 12px', 
+                    borderRadius: '6px', 
                     border: '1px solid #333',
                     background: colors.darker,
                     color: colors.white,
@@ -663,8 +663,8 @@ export default function Home() {
                     style={{
                     background: colors.pink,
                     color: colors.darker,
-                    padding: '16px 32px',
-                    borderRadius: '30px',
+                    padding: '10px 20px',
+                    borderRadius: '6px',
                     fontSize: '14px',
                     fontWeight: 600,
                     border: 'none',
@@ -676,25 +676,29 @@ export default function Home() {
                 </div>
               </div>
 
-              <div>
-                <h3 style={{ fontSize: '20px', color: colors.pink, marginBottom: '24px' }}>Contact Info</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  <div>
-                    <p style={{ fontSize: '12px', color: colors.muted, marginBottom: '4px' }}>Location</p>
-                    <p style={{ fontSize: '15px', color: colors.white }}>Sylhet, Bangladesh</p>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: '12px', color: colors.muted, marginBottom: '4px' }}>Email</p>
-                    <p style={{ fontSize: '15px', color: colors.white }}>hello@aura.com.bd</p>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: '12px', color: colors.muted, marginBottom: '4px' }}>Phone</p>
-                    <p style={{ fontSize: '15px', color: colors.white }}>+880 XXX XXXXXX</p>
-                  </div>
-                  <div>
-                    <p style={{ fontSize: '12px', color: colors.muted, marginBottom: '4px' }}>Hours</p>
-                    <p style={{ fontSize: '15px', color: colors.white }}>Daily: 9:00 AM - 8:00 PM</p>
-                  </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  {[
+                    { icon: "📍", label: "Location", value: "Sylhet, Bangladesh" },
+                    { icon: "📧", label: "Email", value: "hello@femmebd.com" },
+                    { icon: "📞", label: "Phone", value: "+880 XXX XXXXXX" },
+                    { icon: "🕘", label: "Hours", value: "9:00 AM - 5:00 PM" },
+                  ].map((item, i) => (
+                    <div key={i}>
+                      <p style={{ fontSize: '12px', color: colors.pink, marginBottom: '4px' }}>
+                        <span style={{ marginRight: '4px' }}>{item.icon}</span>{item.label}
+                      </p>
+                      <p style={{ fontSize: '14px', color: colors.white }}>{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+                <p style={{ fontSize: '12px', color: colors.muted, marginTop: '4px' }}>Saturday & Sunday: Closed</p>
+                
+                <div style={{ marginTop: '8px', padding: '12px', background: colors.darker, borderRadius: '8px' }}>
+                  <p style={{ fontSize: '13px', color: colors.pink, marginBottom: '6px' }}>Cancellation Policy</p>
+                  <p style={{ fontSize: '13px', color: colors.muted, lineHeight: 1.5 }}>
+                    Cancellations accepted up to 24 hours before the scheduled service. Within 24 hours of the service, cancellations will be charged 50% of the scheduled cost.
+                  </p>
                 </div>
               </div>
             </div>
@@ -742,6 +746,8 @@ export default function Home() {
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :target { scroll-margin-top: 70px; }
       `}</style>
       
       <Footer />

@@ -3,6 +3,20 @@ import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
+const colors = {
+  dark: "#1a1a2e",
+  darker: "#0f0f1a",
+  purple: "#16213e",
+  gold: "#e8b87d",
+  goldLight: "#f0d4a8",
+  pink: "#e88a9f",
+  pinkLight: "#f5b8c4",
+  pinkMuted: "#c97a8a",
+  text: "#f5f5f5",
+  muted: "#8a8a9a",
+  white: "#ffffff",
+};
+
 export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', service: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
@@ -29,83 +43,316 @@ export default function Contact() {
   return (
     <>
       <Navbar />
-      <main className="pt-20">
-        <section className="relative py-20 bg-gradient-to-br from-blush to-ivory">
-          <div className="container text-center">
-            <p className="text-burgundy text-xs tracking-[0.3em] uppercase mb-4">Get in Touch</p>
-            <h1 className="font-serif text-5xl md:text-6xl text-text-dark">Contact Us</h1>
+      <main style={{ background: colors.darker, color: colors.text }}>
+        {/* Hero */}
+        <section style={{
+          minHeight: '50vh',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+          padding: '120px 60px 80px',
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `radial-gradient(ellipse at 50% 0%, ${colors.purple} 0%, ${colors.darker} 70%)`,
+          }} />
+          
+          <div style={{
+            position: 'absolute',
+            top: '30%',
+            left: '20%',
+            width: '400px',
+            height: '400px',
+            borderRadius: '50%',
+            background: `radial-gradient(circle, ${colors.pink}10 0%, transparent 60%)`,
+            filter: 'blur(60px)',
+          }} />
+
+          <div style={{ maxWidth: '1200px', width: '100%', position: 'relative', zIndex: 2, textAlign: 'center' }}>
+            <span style={{
+              fontSize: '11px',
+              letterSpacing: '4px',
+              textTransform: 'uppercase',
+              color: colors.pink,
+              marginBottom: '20px',
+              display: 'block',
+            }}>
+              Get in Touch
+            </span>
+            <h1 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(40px, 6vw, 64px)',
+              fontWeight: 400,
+              color: colors.text,
+            }}>
+              Contact <span style={{ color: colors.pink, fontStyle: 'italic' }}>Us</span>
+            </h1>
           </div>
         </section>
 
-        <section className="section bg-white">
-          <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {/* Contact Content */}
+        <section style={{ padding: '100px 60px', background: colors.dark }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
               {/* Form */}
-              <div className="card p-8">
-                <h2 className="font-serif text-3xl text-text-dark mb-2">Book an Appointment</h2>
-                <p className="text-text-muted mb-8">Fill in the form and we'll get back to you</p>
+              <div style={{ background: colors.purple, padding: '40px', borderRadius: '20px' }}>
+                <h2 style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: 'clamp(24px, 3vw, 32px)',
+                  color: colors.text,
+                  marginBottom: '8px',
+                }}>
+                  Book an <span style={{ color: colors.gold }}>Appointment</span>
+                </h2>
+                <p style={{ fontSize: '14px', color: colors.muted, marginBottom: '32px' }}>
+                  Fill in the form and we'll get back to you
+                </p>
                 
-                {success && <div className="bg-green-100 text-green-800 p-4 rounded-lg mb-6">Thank you! We'll contact you soon.</div>}
+                {success && (
+                  <div style={{ background: colors.pink, color: colors.darker, padding: '16px', borderRadius: '12px', marginBottom: '24px', fontWeight: 500 }}>
+                    Thank you! We'll contact you soon.
+                  </div>
+                )}
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div><label className="block text-sm text-text-muted mb-2">Name *</label>
-                      <input type="text" value={form.name} onChange={e => setForm({...form, name: e.target.value})} required
-                        className="w-full p-4 border border-gray-200 rounded-lg focus:border-burgundy focus:outline-none" /></div>
-                    <div><label className="block text-sm text-text-muted mb-2">Phone *</label>
-                      <input type="tel" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} required
-                        className="w-full p-4 border border-gray-200 rounded-lg focus:border-burgundy focus:outline-none" /></div>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                    <div>
+                      <label style={{ fontSize: '13px', color: colors.muted, marginBottom: '8px', display: 'block' }}>Name *</label>
+                      <input 
+                        type="text" 
+                        value={form.name} 
+                        onChange={e => setForm({...form, name: e.target.value})} 
+                        required
+                        style={{
+                          width: '100%',
+                          padding: '14px 16px',
+                          borderRadius: '10px',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          background: colors.darker,
+                          color: colors.text,
+                          fontSize: '14px',
+                          outline: 'none',
+                        }} 
+                      />
+                    </div>
+                    <div>
+                      <label style={{ fontSize: '13px', color: colors.muted, marginBottom: '8px', display: 'block' }}>Phone *</label>
+                      <input 
+                        type="tel" 
+                        value={form.phone} 
+                        onChange={e => setForm({...form, phone: e.target.value})} 
+                        required
+                        style={{
+                          width: '100%',
+                          padding: '14px 16px',
+                          borderRadius: '10px',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          background: colors.darker,
+                          color: colors.text,
+                          fontSize: '14px',
+                          outline: 'none',
+                        }} 
+                      />
+                    </div>
                   </div>
                   
-                  <div><label className="block text-sm text-text-muted mb-2">Email</label>
-                    <input type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})}
-                      className="w-full p-4 border border-gray-200 rounded-lg focus:border-burgundy focus:outline-none" /></div>
-                  
-                  <div><label className="block text-sm text-text-muted mb-2">Service Interested In</label>
-                    <select value={form.service} onChange={e => setForm({...form, service: e.target.value})}
-                      className="w-full p-4 border border-gray-200 rounded-lg focus:border-burgundy focus:outline-none">
-                      <option value="">Select a service</option>
+                  <div>
+                    <label style={{ fontSize: '13px', color: colors.muted, marginBottom: '8px', display: 'block' }}>Email</label>
+                    <input 
+                      type="email" 
+                      value={form.email} 
+                      onChange={e => setForm({...form, email: e.target.value})}
+                      style={{
+                        width: '100%',
+                        padding: '14px 16px',
+                        borderRadius: '10px',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        background: colors.darker,
+                        color: colors.text,
+                        fontSize: '14px',
+                        outline: 'none',
+                      }} 
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{ fontSize: '13px', color: colors.muted, marginBottom: '8px', display: 'block' }}>Service Interested In</label>
+                    <select 
+                      value={form.service} 
+                      onChange={e => setForm({...form, service: e.target.value})}
+                      style={{
+                        width: '100%',
+                        padding: '14px 16px',
+                        borderRadius: '10px',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        background: colors.darker,
+                        color: colors.text,
+                        fontSize: '14px',
+                        outline: 'none',
+                      }}>
+                      <option value="" style={{ color: colors.muted }}>Select a service</option>
                       <option value="skin">Skin & Face</option>
                       <option value="hair">Hair</option>
                       <option value="makeup">Makeup</option>
                       <option value="body">Body & Wellness</option>
                       <option value="yoga">Yoga Studio</option>
                       <option value="other">Other</option>
-                    </select></div>
-                  
-                  <div><label className="block text-sm text-text-muted mb-2">Message *</label>
-                    <textarea value={form.message} onChange={e => setForm({...form, message: e.target.value})} required rows={4}
-                      className="w-full p-4 border border-gray-200 rounded-lg focus:border-burgundy focus:outline-none" /></div>
-                  
-                  <button type="submit" disabled={submitting} className="btn-primary w-full">
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style={{ fontSize: '13px', color: colors.muted, marginBottom: '8px', display: 'block' }}>Message *</label>
+                    <textarea 
+                      value={form.message} 
+                      onChange={e => setForm({...form, message: e.target.value})} 
+                      required 
+                      rows={4}
+                      style={{
+                        width: '100%',
+                        padding: '14px 16px',
+                        borderRadius: '10px',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        background: colors.darker,
+                        color: colors.text,
+                        fontSize: '14px',
+                        outline: 'none',
+                        resize: 'vertical',
+                      }} 
+                    />
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    disabled={submitting}
+                    style={{
+                      background: colors.pink,
+                      color: colors.darker,
+                      padding: '16px 32px',
+                      borderRadius: '30px',
+                      fontSize: '15px',
+                      fontWeight: 600,
+                      border: 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                    }}
+                  >
                     {submitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               </div>
 
               {/* Info */}
-              <div className="space-y-8">
-                <div className="card p-8">
-                  <h3 className="font-serif text-2xl text-text-dark mb-6">Contact Information</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4"><span className="text-2xl">📍</span><div><p className="font-medium text-text-dark">Address</p><p className="text-text-muted">Sylhet, Bangladesh</p></div></div>
-                    <div className="flex items-center gap-4"><span className="text-2xl">📞</span><div><p className="font-medium text-text-dark">Phone</p><p className="text-text-muted">+880 XXX XXXXXX</p></div></div>
-                    <div className="flex items-center gap-4"><span className="text-2xl">✉️</span><div><p className="font-medium text-text-dark">Email</p><p className="text-text-muted">hello@femme.com</p></div></div>
-                    <div className="flex items-center gap-4"><span className="text-2xl">🕐</span><div><p className="font-medium text-text-dark">Working Hours</p><p className="text-text-muted">Daily: 9:00 AM - 8:00 PM</p></div></div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                <div style={{ background: colors.purple, padding: '32px', borderRadius: '20px' }}>
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 'clamp(20px, 3vw, 28px)',
+                    color: colors.text,
+                    marginBottom: '28px',
+                  }}>
+                    Contact <span style={{ color: colors.gold }}>Information</span>
+                  </h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                      <span style={{ fontSize: '24px' }}>📍</span>
+                      <div>
+                        <p style={{ fontSize: '14px', fontWeight: 500, color: colors.text }}>Address</p>
+                        <p style={{ fontSize: '14px', color: colors.muted }}>Sylhet, Bangladesh</p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                      <span style={{ fontSize: '24px' }}>📞</span>
+                      <div>
+                        <p style={{ fontSize: '14px', fontWeight: 500, color: colors.text }}>Phone</p>
+                        <p style={{ fontSize: '14px', color: colors.muted }}>+880 XXX XXXXXX</p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                      <span style={{ fontSize: '24px' }}>✉️</span>
+                      <div>
+                        <p style={{ fontSize: '14px', fontWeight: 500, color: colors.text }}>Email</p>
+                        <p style={{ fontSize: '14px', color: colors.muted }}>hello@femme.com.bd</p>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                      <span style={{ fontSize: '24px' }}>🕐</span>
+                      <div>
+                        <p style={{ fontSize: '14px', fontWeight: 500, color: colors.text }}>Working Hours</p>
+                        <p style={{ fontSize: '14px', color: colors.muted }}>Sat - Thu: 9:00 AM - 5:00 PM</p>
+                        <p style={{ fontSize: '14px', color: colors.muted }}>Friday: Closed</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="card p-8">
-                  <h3 className="font-serif text-2xl text-text-dark mb-4">Location</h3>
-                  <div className="bg-cream rounded-xl overflow-hidden h-48 flex items-center justify-center">
-                    <p className="text-text-muted">Google Maps Embed - Sylhet</p>
+                <div style={{ background: colors.purple, padding: '32px', borderRadius: '20px' }}>
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 'clamp(18px, 2.5vw, 24px)',
+                    color: colors.text,
+                    marginBottom: '20px',
+                  }}>
+                    Location
+                  </h3>
+                  <div style={{ 
+                    background: colors.darker, 
+                    borderRadius: '16px', 
+                    overflow: 'hidden', 
+                    height: '200px',
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                  }}>
+                    <p style={{ fontSize: '14px', color: colors.muted }}>Google Maps Embed - Sylhet</p>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <a href="#" className="w-12 h-12 bg-burgundy text-white rounded-full flex items-center justify-center hover:bg-burgundy-light">FB</a>
-                  <a href="#" className="w-12 h-12 bg-burgundy text-white rounded-full flex items-center justify-center hover:bg-burgundy-light">IG</a>
-                  <a href="#" className="w-12 h-12 bg-burgundy text-white rounded-full flex items-center justify-center hover:bg-burgundy-light">WA</a>
+                <div style={{ display: 'flex', gap: '16px' }}>
+                  <a href="#" style={{
+                    width: '48px',
+                    height: '48px',
+                    background: colors.pink,
+                    color: colors.darker,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                  }}>FB</a>
+                  <a href="#" style={{
+                    width: '48px',
+                    height: '48px',
+                    background: colors.pink,
+                    color: colors.darker,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                  }}>IG</a>
+                  <a href="#" style={{
+                    width: '48px',
+                    height: '48px',
+                    background: colors.pink,
+                    color: colors.darker,
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                  }}>WA</a>
                 </div>
               </div>
             </div>
@@ -113,6 +360,15 @@ export default function Contact() {
         </section>
       </main>
       <Footer />
+
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        input:focus, textarea:focus, select:focus {
+          border-color: ${colors.pink} !important;
+          outline: none;
+        }
+      `}</style>
     </>
   );
 }
