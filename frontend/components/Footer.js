@@ -35,7 +35,7 @@ export default function Footer() {
             marginBottom: '20px',
             letterSpacing: '3px',
           }}>
-            AURA
+            FEmmE
           </h3>
           <p style={{ 
             fontSize: '14px', 
@@ -99,7 +99,7 @@ export default function Footer() {
         fontSize: '13px',
         color: colors.muted,
       }}>
-        <span>© 2025 AURA Beauty. All rights reserved.</span>
+        <span>© 2025 FEmmE Beauty. All rights reserved.</span>
         <div style={{ display: 'flex', gap: '20px' }}>
           <span>Instagram</span>
           <span>Facebook</span>

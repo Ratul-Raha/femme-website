@@ -46,3 +46,39 @@ Haircut
 225 Haircut Straight — 100
 226 Haircut Bangs / V — 200
 227 Haircut Baby — 200
+
+Spa
+
+555 Manicure — 500 
+556 Pedicure — 500 
+557 Paraffin Wax — 300
+558 Paraffin Wax with Manicure / Pedicure — 700
+559 Milk Spa with Aroma Fragrance — 500
+560 Manicure Spa — 800
+561 Pedicure Spa — 800
+562 French Manicure / Pedicure — 200
+563 Glow Hand / Foot — 800
+564 Foot Spa — 600
+565 Hand Spa — 500
+566 Full Body Wax — 3,000
+567 Hand / Leg (half) Bleach or Wax — 600
+568 Hand / Leg (full) Bleach or Wax — 1,200
+569 Other Wax — 300
+570 Herbal Face Bleach — 700
+571 Fair Polish or Face Bleach — —
+572 Other Bleach — —
+573 Upper Lip Wax / Bleach — 100
+574 Under Arm Wax — 300
+575 Full Face Wax — 1,000
+576 Half Face Wax — 500
+
+Massage
+
+888 Normal Body Massage (60 min.) — 2,000 
+887 Thai Body Massage (90 min.) — 3,500 
+886 Full Body Spa (90 min.) — 4,000 
+885 Hand Massage — 300 
+884 Leg Massage — 400 
+883 Thai Foot Massage — 800
+882 Thai Hand Massage — 500
+881 Customized Body Massage —

@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const colors = {
   dark: "#1a1a2e",
@@ -18,12 +19,21 @@ const colors = {
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Gallery', path: '/gallery' },
+    { name: 'Contact', path: '/contact' },
+  ];
 
   return (
     <nav style={{
@@ -55,25 +65,31 @@ export default function Navbar() {
           textDecoration: 'none',
           letterSpacing: '2px',
         }}>
-          AURA
+          FEmmE
         </Link>
         
         <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
-          {['Home', 'About', 'Services', 'Gallery', 'Contact'].map(item => (
-            <Link 
-              key={item} 
-              href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-              style={{
-                fontSize: '13px',
-                color: colors.cream,
-                textDecoration: 'none',
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-              }}
-            >
-              {item}
-            </Link>
-          ))}
+          {navItems.map(item => {
+            const isActive = pathname === item.path;
+            return (
+              <Link 
+                key={item.name}
+                href={item.path}
+                style={{
+                  fontSize: '13px',
+                  color: isActive ? colors.pink : colors.cream,
+                  textDecoration: 'none',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase',
+                  borderBottom: isActive ? `2px solid ${colors.pink}` : '2px solid transparent',
+                  paddingBottom: '4px',
+                  transition: 'all 0.3s ease',
+                }}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
 
         <Link href="/contact" style={{
@@ -86,7 +102,7 @@ export default function Navbar() {
           textDecoration: 'none',
           letterSpacing: '1px',
         }}>
-          Book Now
+          Get In Touch
         </Link>
       </div>
     </nav>
