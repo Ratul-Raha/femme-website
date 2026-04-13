@@ -1,0 +1,48 @@
+Facial
+
+101 Acne facial — 1,200
+102 Aloe Vera — 1,200
+103 Flower — 1,500
+104 Galvanic — 1,200
+105 Anti-Wrinkle / Dark Circle — 1,500
+106 Aroma — 1,000
+
+144 Bridal — 1,500
+108 Seaweed — 1,200
+109 Chocolate — 1,200
+110 Deep Cleansing — 1,500
+
+111 Deep Protein — 1,500
+112 Fruits (seasonal) — 1,300
+113 Anti-Pigmentation — 1,000
+114 Anti-Sunburn / Tanning — 1,200
+115 Gold / Diamond — 1,500
+
+116 Herbal Fair Polish — 1,200
+117 Lavender — 1,200
+118 Mint — 1,000
+119 Oxygen — 1,200
+120 Pearl — 1,200
+
+121 Sandalwood — 1,500
+122 Brightness / Glowness — 1,200
+123 Silver — 1,200
+124 Thermoherb — 1,200
+125 Vegetable — 800
+
+155 FEmmE Normal Facial (30 min.) — 450
+166 FEmmE Special Facial (90 min.) — 1,950 → 2,250 (corrected handwritten)
+
+133 Treatment Facial — 1,000
+134 Treatment Facial — 400
+140 Skin Test — 200
+141 Computerised Skin Test — 300
+
+Haircut
+
+222 Haircut with wash — 600
+223 Haircut — 500
+224 Haircut U — 150
+225 Haircut Straight — 100
+226 Haircut Bangs / V — 200
+227 Haircut Baby — 200
