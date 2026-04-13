@@ -145,14 +145,24 @@ export default function Home() {
           overflow: 'hidden',
           padding: '120px 60px 80px',
         }}>
-          {/* Animated background */}
+          {/* Background Image */}
           <div style={{
             position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            background: `radial-gradient(ellipse at 50% 0%, ${colors.purple} 0%, ${colors.darker} 70%)`,
+            background: 'url(/images/bride_photo_1.png) center/cover no-repeat',
+          }} />
+          
+          {/* Black Transparent Overlay */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.7)',
           }} />
           
           {/* Floating orbs */}
