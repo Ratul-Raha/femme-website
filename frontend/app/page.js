@@ -243,28 +243,40 @@ export default function Home() {
               </p>
               
               <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-                <Link href="/contact" style={{
-                  background: colors.pink,
-                  color: colors.darker,
-                  padding: '16px 36px',
-                  borderRadius: '40px',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  textDecoration: 'none',
-                  letterSpacing: '1px',
-                }}>
+                <Link 
+                  href="/contact" 
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(232,138,159,0.4)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                  style={{
+                    background: colors.pink,
+                    color: colors.darker,
+                    padding: '16px 36px',
+                    borderRadius: '40px',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    letterSpacing: '1px',
+                    transition: 'all 0.3s ease',
+                    display: 'inline-block',
+                  }}>
                   Get In Touch
                 </Link>
-                <Link href="/services" style={{
-                  background: 'transparent',
-                  color: colors.white,
-                  border: `1px solid ${colors.gold}60`,
-                  padding: '16px 36px',
-                  borderRadius: '40px',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                }}>
+                <Link 
+                  href="/services" 
+                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.background = colors.gold; e.currentTarget.style.color = colors.darker; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = colors.white; }}
+                  style={{
+                    background: 'transparent',
+                    color: colors.white,
+                    border: `1px solid ${colors.gold}60`,
+                    padding: '16px 36px',
+                    borderRadius: '40px',
+                    fontSize: '14px',
+                    fontWeight: 500,
+                    textDecoration: 'none',
+                    transition: 'all 0.3s ease',
+                    display: 'inline-block',
+                  }}>
                   Explore Services
                 </Link>
               </div>
@@ -343,6 +355,8 @@ export default function Home() {
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
+                  onMouseEnter={(e) => activeCategory !== cat.id && (e.currentTarget.style.transform = 'translateY(-2px)')}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                   style={{
                     padding: '10px 20px',
                     borderRadius: '30px',
@@ -435,7 +449,10 @@ export default function Home() {
               <p style={{ fontSize: '15px', color: colors.muted, lineHeight: 1.9, marginBottom: '30px' }}>
                 Our team of artisans combines ancient wisdom with contemporary techniques, ensuring each moment spent with us transforms not just your appearance, but your spirit.
               </p>
-              <Link href="/about" style={{
+              <Link href="/about" 
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(232,138,159,0.4)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                style={{
                 display: 'inline-block',
                 background: colors.pink,
                 color: colors.darker,
@@ -444,6 +461,7 @@ export default function Home() {
                 fontSize: '14px',
                 fontWeight: 600,
                 textDecoration: 'none',
+                transition: 'all 0.3s ease',
               }}>
                 Discover More
               </Link>
@@ -525,7 +543,10 @@ export default function Home() {
             </div>
 
             <div style={{ textAlign: 'center', marginTop: '50px' }}>
-              <Link href="/gallery" style={{
+              <Link href="/gallery" 
+                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(232,138,159,0.4)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                style={{
                 background: colors.pink,
                 color: colors.darker,
                 padding: '14px 32px',
@@ -533,6 +554,7 @@ export default function Home() {
                 fontSize: '14px',
                 fontWeight: 600,
                 textDecoration: 'none',
+                transition: 'all 0.3s ease',
               }}>
                 View Full Gallery
               </Link>
@@ -575,7 +597,10 @@ export default function Home() {
             }}>
               Your journey to radiance starts with a single step. Book your appointment today and let us craft your perfect moment.
             </p>
-            <Link href="/contact" style={{
+            <Link href="/contact" 
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 10px 30px rgba(232,138,159,0.4)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+              style={{
               display: 'inline-block',
               background: colors.pink,
               color: colors.darker,
@@ -584,6 +609,7 @@ export default function Home() {
               fontSize: '16px',
               fontWeight: 600,
               textDecoration: 'none',
+              transition: 'all 0.3s ease',
             }}>
               Book Appointment
             </Link>
@@ -631,7 +657,10 @@ export default function Home() {
                     fontSize: '14px',
                     resize: 'none',
                   }} />
-                  <button style={{
+                  <button 
+                    onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 25px rgba(232,138,159,0.4)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                    style={{
                     background: colors.pink,
                     color: colors.darker,
                     padding: '16px 32px',
@@ -640,6 +669,7 @@ export default function Home() {
                     fontWeight: 600,
                     border: 'none',
                     cursor: 'pointer',
+                    transition: 'all 0.3s ease',
                   }}>
                     Send Message
                   </button>
