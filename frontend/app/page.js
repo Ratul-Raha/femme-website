@@ -339,13 +339,13 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section id="services" style={{ padding: '80px 60px', background: colors.dark }}>
+        <section id="services" style={{ padding: '80px 60px', background: colors.white }}>
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-              <span style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: colors.pink, marginBottom: '8px', display: 'block' }}>
+              <span style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: '#e88a9f', marginBottom: '8px', display: 'block', fontWeight: 600 }}>
                 What We Offer
               </span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 4vw, 36px)', color: colors.white }}>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 4vw, 36px)', color: '#1a1a2e' }}>
                 Our Services
               </h2>
             </div>
@@ -361,9 +361,9 @@ export default function Home() {
                   style={{
                     padding: '10px 20px',
                     borderRadius: '30px',
-                    border: activeCategory === cat.id ? `1px solid ${colors.pink}` : `1px solid ${colors.gold}40`,
-                    background: activeCategory === cat.id ? colors.pink : 'transparent',
-                    color: activeCategory === cat.id ? colors.darker : colors.muted,
+                    border: activeCategory === cat.id ? `1px solid #e88a9f` : `1px solid #e8b87d`,
+                    background: activeCategory === cat.id ? '#e88a9f' : 'transparent',
+                    color: activeCategory === cat.id ? '#0f0f1a' : '#1a1a2e',
                     fontSize: '13px',
                     fontWeight: 500,
                     cursor: 'pointer',
@@ -389,9 +389,9 @@ export default function Home() {
                 style={{
                   padding: '6px 14px',
                   borderRadius: '20px',
-                  border: `1px solid ${colors.purple}`,
-                  background: colors.darker,
-                  color: colors.white,
+                  border: `1px solid #e8b87d`,
+                  background: '#fafafa',
+                  color: '#1a1a2e',
                   fontSize: '12px',
                   width: '140px',
                 }}
@@ -410,11 +410,11 @@ export default function Home() {
                     alignItems: 'center',
                     padding: '8px 12px',
                     borderRadius: '4px',
-                    background: `${colors.purple}20`,
+                    background: '#f5f5f5',
                   }}>
-                    <span style={{ fontSize: '11px', color: colors.pink }}>{service.code}</span>
-                    <span style={{ fontSize: '12px', color: colors.white }}>{service.name}</span>
-                    <span style={{ fontSize: '12px', color: service.price ? colors.gold : colors.muted, textAlign: 'right' }}>
+                    <span style={{ fontSize: '11px', color: '#e88a9f', fontWeight: 600 }}>{service.code}</span>
+                    <span style={{ fontSize: '12px', color: '#1a1a2e' }}>{service.name}</span>
+                    <span style={{ fontSize: '12px', color: service.price ? '#e8b87d' : '#8a8a9a', textAlign: 'right', fontWeight: 600 }}>
                       {service.price ? `৳ ${service.price}` : '—'}
                     </span>
                   </div>
@@ -425,6 +425,16 @@ export default function Home() {
 
         {/* About Section */}
         <section style={{ padding: '120px 60px', background: colors.darker, position: 'relative' }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '600px',
+            height: '600px',
+            background: `radial-gradient(circle, ${colors.gold}10 0%, transparent 60%)`,
+            filter: 'blur(80px)',
+          }} />
           <div style={{
             position: 'absolute',
             top: 0,
@@ -503,7 +513,17 @@ export default function Home() {
         </section>
 
         {/* Gallery Section */}
-        <section style={{ padding: '120px 60px', background: colors.dark }}>
+        <section style={{ padding: '120px 60px', background: colors.darker, position: 'relative' }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '600px',
+            height: '600px',
+            background: `radial-gradient(circle, ${colors.pink}10 0%, transparent 60%)`,
+            filter: 'blur(80px)',
+          }} />
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '60px' }}>
               <span style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: colors.pink, marginBottom: '16px', display: 'block' }}>
@@ -564,7 +584,17 @@ export default function Home() {
         </section>
 
         {/* Reviews Section */}
-        <section style={{ padding: '80px 60px', background: colors.dark }}>
+        <section style={{ padding: '80px 60px', background: colors.darker, position: 'relative' }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '600px',
+            height: '600px',
+            background: `radial-gradient(circle, ${colors.rose}10 0%, transparent 60%)`,
+            filter: 'blur(80px)',
+          }} />
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '48px' }}>
               <span style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: colors.pink, marginBottom: '12px', display: 'block' }}>
@@ -617,7 +647,17 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section style={{ padding: '80px 60px', background: colors.dark }}>
+        <section style={{ padding: '80px 60px', background: colors.darker, position: 'relative' }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '600px',
+            height: '600px',
+            background: `radial-gradient(circle, ${colors.gold}10 0%, transparent 60%)`,
+            filter: 'blur(80px)',
+          }} />
           <div style={{ maxWidth: '900px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '32px' }}>
               <span style={{ fontSize: '12px', letterSpacing: '3px', textTransform: 'uppercase', color: colors.pink, marginBottom: '8px', display: 'block' }}>

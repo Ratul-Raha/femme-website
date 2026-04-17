@@ -138,8 +138,7 @@ export default function About() {
                 all our treatments.
               </p>
               <p style={{ fontSize: '15px', color: colors.muted, lineHeight: 1.9 }}>
-                Beyond beauty, we offer a dedicated women-only yoga studio with professional female 
-                instructors, providing a holistic approach to wellness for women in our community.
+                Beyond beauty, we provide a holistic approach to wellness for women in our community.
               </p>
             </div>
           </div>
@@ -171,63 +170,6 @@ export default function About() {
                   <p style={{ fontSize: '13px', color: colors.muted }}>{v.desc}</p>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Yoga Studio */}
-        <section style={{ padding: '100px 60px', background: colors.dark }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
-            <div>
-              <span style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: colors.pink, marginBottom: '12px', display: 'block' }}>
-                Yoga Studio
-              </span>
-              <h2 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(28px, 4vw, 40px)',
-                color: colors.text,
-                marginBottom: '24px',
-              }}>
-                Women-Only <span style={{ color: colors.gold }}>Yoga</span> Space
-              </h2>
-              <p style={{ fontSize: '15px', color: colors.muted, lineHeight: 1.9, marginBottom: '20px' }}>
-                At FEmmE, we believe beauty is holistic. Our dedicated yoga studio offers a private, 
-                comfortable space exclusively for women to practice yoga and meditation.
-              </p>
-              <p style={{ fontSize: '15px', color: colors.muted, lineHeight: 1.9, marginBottom: '30px' }}>
-                Led by professional female instructors, our yoga sessions help you find balance 
-                between mind, body, and spirit — the perfect complement to our beauty services.
-              </p>
-              <Link href="/contact" style={{
-                background: colors.pink,
-                color: colors.darker,
-                padding: '14px 32px',
-                borderRadius: '30px',
-                fontSize: '14px',
-                fontWeight: 600,
-                textDecoration: 'none',
-                display: 'inline-block',
-              }}>
-                Book Yoga Session
-              </Link>
-            </div>
-
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-              <div style={{
-                height: '300px',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                marginTop: '30px',
-              }}>
-                <img src="/images/2a45382ff49b2d7afd925c17839187c2.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-              <div style={{
-                height: '300px',
-                borderRadius: '20px',
-                overflow: 'hidden',
-              }}>
-                <img src="/images/b1accacdf8af9c27cedc4dcb7578cf98.jpg" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
             </div>
           </div>
         </section>
