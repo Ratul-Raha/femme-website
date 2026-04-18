@@ -634,6 +634,72 @@ function GalleryTeaser() {
   );
 }
 
+// ── Magic Moments Gallery ──────────────────────────────────────────────
+const MOMENTS_ITEMS = [
+  { cat: "Spa relaxation", bg: colors.blush },
+  { cat: "Bridal moment", bg: colors.rose, span: "tall" },
+  { cat: "Yoga session", bg: "#fdf6f8" },
+  { cat: "Hair styling", bg: "#d4908a" },
+  { cat: "Nail art", bg: colors.mauve },
+  { cat: "Facial treatment", bg: "#fbeaf0" },
+];
+
+function MagicMoments() {
+  const [ref, visible] = useInView();
+  return (
+    <section ref={ref} style={{ padding: "80px 40px", background: colors.cream }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "12px", marginBottom: "32px" }}>
+        <SectionHeader label="Our work" title="Magic Moments" />
+        <Link href="/gallery" style={{
+          background: "transparent", color: colors.burgundy,
+          border: `1.5px solid ${colors.mauve}`,
+          padding: "9px 20px", borderRadius: "30px",
+          fontSize: "12px", fontWeight: 500, textDecoration: "none",
+          marginBottom: "40px",
+        }}>
+          View all
+        </Link>
+      </div>
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+        gridTemplateRows: "160px 160px",
+        gap: "12px",
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(30px)",
+        transition: "opacity 0.7s ease, transform 0.7s ease",
+      }}>
+        {MOMENTS_ITEMS.map(({ cat, bg, span, border }, i) => (
+          <div key={cat} style={{
+            gridRow: span === "tall" ? "span 2" : "span 1",
+            gridColumn: span === "wide" ? "span 2" : "span 1",
+            background: bg, borderRadius: "14px",
+            border: border ? `0.5px solid #e8d5dc` : "none",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            position: "relative", overflow: "hidden", cursor: "pointer",
+          }}
+            onMouseEnter={(e) => e.currentTarget.querySelector(".overlay").style.opacity = "1"}
+            onMouseLeave={(e) => e.currentTarget.querySelector(".overlay").style.opacity = "0"}>
+            <span style={{ fontSize: "11px", fontWeight: 500, color: colors.burgundy, letterSpacing: "1.5px", textTransform: "uppercase" }}>
+              {cat}
+            </span>
+            <div className="overlay" style={{
+              position: "absolute", inset: 0,
+              background: "rgba(74,26,46,0.55)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              opacity: 0, transition: "opacity 0.2s", borderRadius: "14px",
+            }}>
+              <span style={{ color: "#fff", fontSize: "12px", letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 500 }}>
+                {cat}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 // ── CTA Banner ─────────────────────────────────────────────────────────────
 function CtaBanner() {
   return (
@@ -754,6 +820,7 @@ export default function Home() {
         <Services />
         <AboutTeaser />
         <Reviews />
+        <MagicMoments />
         <GalleryTeaser />
         <CtaBanner />
       </main>
