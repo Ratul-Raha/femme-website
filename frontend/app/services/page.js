@@ -5,13 +5,14 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 const colors = {
-  dark: "#1a1a2e",
-  darker: "#0f0f1a",
-  purple: "#16213e",
-  gold: "#e8b87d",
-  pink: "#e88a9f",
-  text: "#f5f5f5",
-  muted: "#8a8a9a",
+  dark: "#111111",
+  deepRose: "#C22DCC",
+  royalPink: "#C22DCC",
+  richGold: "#D4AF37",
+  softCream: "#FFF8F2",
+  white: "#ffffff",
+  text: "#111111",
+  muted: "#6D6D6D",
 };
 
 const categories = [
@@ -102,90 +103,199 @@ const servicesData = {
 export default function Services() {
   const [activeCategory, setActiveCategory] = useState("facial");
   const [searchQuery, setSearchQuery] = useState("");
+  const [priceFilter, setPriceFilter] = useState("all");
 
   return (
     <>
       <Navbar />
-      <main style={{ background: colors.darker, color: colors.text }}>
-        {/* Services Section */}
-        <section style={{ padding: '160px 60px 80px', background: colors.dark }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-              <span style={{ fontSize: '10px', letterSpacing: '3px', textTransform: 'uppercase', color: colors.pink, marginBottom: '8px', display: 'block' }}>
-                What We Offer
-              </span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 4vw, 36px)', color: colors.text }}>
-                Price List
-              </h2>
-            </div>
+      <main style={{ background: colors.softCream, color: colors.text }}>
+        {/* Hero Section */}
+        <section style={{
+          minHeight: '40vh',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+          background: colors.dark,
+          paddingTop: '90px',
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'url(/images/01.jpg) center/cover no-repeat',
+          }} />
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0,0,0,0.75)',
+          }} />
 
-            {/* Filter Tabs */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '20px', flexWrap: 'wrap' }}>
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
+          <div style={{
+            maxWidth: '800px',
+            width: '100%',
+            position: 'relative',
+            zIndex: 2,
+            textAlign: 'center',
+            padding: '60px 40px',
+          }}>
+            <span style={{
+              display: 'inline-block',
+              fontSize: '11px',
+              letterSpacing: '4px',
+              textTransform: 'uppercase',
+              color: colors.deepRose,
+              marginBottom: '20px',
+              padding: '8px 16px',
+              border: `1px solid ${colors.richGold}40`,
+              borderRadius: '30px',
+            }}>
+              Our Services
+            </span>
+            <h1 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: 'clamp(38px, 6vw, 56px)',
+              fontWeight: 400,
+              color: colors.white,
+              marginBottom: '20px',
+            }}>
+              Signature <span style={{ color: colors.richGold, fontStyle: 'italic' }}>Treatments</span>
+            </h1>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section style={{ padding: '60px 40px 100px', background: colors.softCream }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            {/* Filters */}
+            <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {categories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => setActiveCategory(cat.id)}
+                    style={{
+                      padding: '8px 16px',
+                      borderRadius: '20px',
+                      border: activeCategory === cat.id ? '1px solid #C22DCC' : '1px solid #ddd',
+                      background: activeCategory === cat.id ? "#C22DCC" : 'transparent',
+                      color: activeCategory === cat.id ? colors.white : colors.text,
+                      fontSize: '11px',
+                      fontWeight: 500,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {cat.icon} {cat.name}
+                  </button>
+                ))}
+              </div>
+              
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   style={{
-                    padding: '10px 20px',
-                    borderRadius: '30px',
-                    border: activeCategory === cat.id ? `1px solid ${colors.pink}` : `1px solid ${colors.gold}40`,
-                    background: activeCategory === cat.id ? colors.pink : 'transparent',
-                    color: activeCategory === cat.id ? colors.darker : colors.muted,
-                    fontSize: '13px',
-                    fontWeight: 500,
+                    padding: '8px 12px',
+                    borderRadius: '16px',
+                    border: '1px solid #ddd',
+                    background: colors.white,
+                    fontSize: '11px',
+                    width: '100px',
+                    outline: 'none',
+                  }}
+                />
+                <select
+                  value={priceFilter}
+                  onChange={(e) => setPriceFilter(e.target.value)}
+                  style={{
+                    padding: '8px 12px',
+                    borderRadius: '16px',
+                    border: '1px solid #ddd',
+                    background: colors.white,
+                    fontSize: '11px',
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
                   }}
                 >
-                  <span>{cat.icon}</span>
-                  {cat.name}
-                </button>
-              ))}
+                  <option value="all">All</option>
+                  <option value="0-500">&lt;৳500</option>
+                  <option value="500-1000">৳500+</option>
+                  <option value="1000-2000">৳1000+</option>
+                  <option value="2000+">৳2000+</option>
+                </select>
+              </div>
             </div>
 
-            {/* Search */}
-            <div style={{ display: 'flex', marginBottom: '16px' }}>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{
-                  padding: '6px 14px',
-                  borderRadius: '20px',
-                  border: `1px solid ${colors.purple}`,
-                  background: colors.darker,
-                  color: colors.text,
-                  fontSize: '12px',
-                  width: '140px',
-                }}
-              />
-            </div>
-
-            {/* Service Listing */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1px' }}>
+            {/* Two Column Services List */}
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: '1fr 1fr', 
+              gap: '8px',
+              maxHeight: '340px',
+              overflowY: 'auto',
+            }}>
+              <style>{`
+                .service-row:hover { background: rgba(194,37,91,0.08); }
+              `}</style>
               {servicesData[activeCategory]
-                ?.filter(s => searchQuery === "" || s.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                .map((service, i) => (
-                  <div key={service.code} style={{
-                    display: 'grid',
-                    gridTemplateColumns: '45px 1fr 70px',
-                    gap: '6px',
+                ?.filter(s => {
+                  const matchesSearch = searchQuery === "" || s.name.toLowerCase().includes(searchQuery.toLowerCase());
+                  const matchesPrice = priceFilter === "all" || (priceFilter === "0-500" && s.price < 500) ||
+                    (priceFilter === "500-1000" && s.price >= 500 && s.price < 1000) ||
+                    (priceFilter === "1000-2000" && s.price >= 1000 && s.price < 2000) ||
+                    (priceFilter === "2000+" && s.price >= 2000);
+                  return matchesSearch && matchesPrice;
+                })
+                .map((service) => (
+                  <div key={service.code} className="service-row" style={{
+                    padding: '10px 12px',
+                    borderRadius: '8px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
                     alignItems: 'center',
-                    padding: '8px 12px',
-                    borderRadius: '4px',
-                    background: `${colors.purple}20`,
+                    transition: 'background 0.2s ease',
                   }}>
-                    <span style={{ fontSize: '11px', color: colors.pink }}>{service.code}</span>
-                    <span style={{ fontSize: '12px', color: colors.text }}>{service.name}</span>
-                    <span style={{ fontSize: '12px', color: service.price ? colors.gold : colors.muted, textAlign: 'right' }}>
-                      {service.price ? `৳ ${service.price}` : '—'}
+                    <div>
+                      <span style={{ fontSize: '10px', color: "#C22DCC", fontWeight: 600 }}>{service.code}</span>
+                      <span style={{ fontSize: '12px', color: colors.text, display: 'block' }}>{service.name}</span>
+                    </div>
+                    <span style={{ fontSize: '13px', color: colors.richGold, fontWeight: 700 }}>
+                      {service.price ? `৳${service.price}` : '—'}
                     </span>
                   </div>
                 ))}
+            </div>
+
+            {/* Results Count */}
+            <div style={{ marginTop: '16px', fontSize: '12px', color: colors.muted }}>
+              {servicesData[activeCategory]?.filter(s => {
+                const matchesSearch = searchQuery === "" || s.name.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesPrice = priceFilter === "all" || (priceFilter === "0-500" && s.price < 500) ||
+                  (priceFilter === "500-1000" && s.price >= 500 && s.price < 1000) ||
+                  (priceFilter === "1000-2000" && s.price >= 1000 && s.price < 2000) ||
+                  (priceFilter === "2000+" && s.price >= 2000);
+                return matchesSearch && matchesPrice;
+              }).length} services found
+            </div>
+
+            {/* View All Link */}
+            <div style={{ marginTop: '16px' }}>
+              <Link href="/" style={{
+                color: "#C22DCC",
+                fontSize: '13px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                borderBottom: '1px solid #C22DCC',
+              }}>
+                ← Back to Home
+              </Link>
             </div>
           </div>
         </section>

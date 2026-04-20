@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -93,22 +93,35 @@ const trustBadges = [
 ];
 
 export default function Home() {
-  const [loaded, setLoaded] = useState(false);
   const [activeCategory, setActiveCategory] = useState("facial");
   const [searchQuery, setSearchQuery] = useState("");
   const [priceFilter, setPriceFilter] = useState("all");
   const [lightboxImg, setLightboxImg] = useState(null);
 
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
-
   return (
     <>
       <Navbar />
-      <main style={{ background: colors.softCream, color: colors.text }}>
+<style>{`
+            @keyframes waterFlow {
+              0% { background-position: 0% 50%; }
+              25% { background-position: 100% 25%; }
+              50% { background-position: 100% 75%; }
+              75% { background-position: 0% 50%; }
+              100% { background-position: 0% 50%; }
+            }
+            @keyframes waveMove {
+              0% { background-position: 0% 50%; }
+              25% { background-position: 100% 25%; }
+              50% { background-position: 100% 75%; }
+              75% { background-position: 0% 50%; }
+              100% { background-position: 0% 50%; }
+            }
+          `}</style>
+        <main style={{ position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #ffffff 0%, #fefefe 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 20%, rgba(166,39,174,0.1) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(166,39,174,0.06) 0%, transparent 50%)', backgroundSize: '200% 200%', animation: 'waterFlow 10s ease-in-out infinite' }} />
         
-        {/* Hero Section - Dark */}
+        {/* Hero Section - Full Screen Image */}
         <section style={{
           minHeight: '100vh',
           position: 'relative',
@@ -116,26 +129,11 @@ export default function Home() {
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          background: colors.dark,
+          background: 'url(/images/01.jpg) center/cover no-repeat',
           paddingTop: '90px',
         }}>
-          {/* Background */}
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'url(/images/bride_photo_1.png) center/cover no-repeat',
-          }} />
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0,0,0,0.75)',
-          }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.88) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 20%, rgba(166,39,174,0.08) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(166,39,174,0.04) 0%, transparent 50%)', backgroundSize: '200% 200%', animation: 'waveMove 10s ease-in-out infinite' }} />
           
           <div style={{
             maxWidth: '1200px',
@@ -148,52 +146,43 @@ export default function Home() {
             alignItems: 'center',
             padding: '120px 60px',
           }}>
-            <div style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? 'translateY(0)' : 'translateY(40px)',
-              transition: 'all 1s ease',
-            }}>
-              <span style={{
-                display: 'inline-block',
-                fontSize: '11px',
-                letterSpacing: '4px',
-                textTransform: 'uppercase',
-                color: "#C2185B",
+            <div>
+<div style={{
+                fontSize: '12px',
+                letterSpacing: '3px',
+                color: "#666",
                 marginBottom: '24px',
-                padding: '8px 16px',
-                border: `1px solid ${colors.richGold}40`,
-                borderRadius: '30px',
               }}>
-                Sylhet's Premium Beauty Destination
-              </span>
-              
+                beauty . lifestyle . care
+              </div>
+               
               <h1 style={{
                 fontFamily: "'Playfair Display', serif",
                 fontSize: 'clamp(42px, 6vw, 64px)',
                 fontWeight: 400,
                 lineHeight: 1.1,
-                color: '#fff',
+                color: '#1a1a1a',
                 marginBottom: '24px',
               }}>
                 Where Beauty <span style={{ color: '#D4AF37' }}>Meets</span>
-                <br /><span style={{ color: "#C2185B", fontStyle: 'italic' }}>Royal Care</span>
+                <br /><span style={{ color: "#A627AE", fontStyle: 'italic' }}>Royal Care</span>
               </h1>
-              
+               
               <p style={{
                 fontSize: '16px',
-                color: '#aaa',
+                color: '#555',
                 lineHeight: 1.8,
                 maxWidth: '440px',
                 marginBottom: '40px',
               }}>
                 Experience the finest beauty treatments in Sylhet. Your transformation begins at Sylhet's most trusted premium beauty parlour.
               </p>
-              
+               
               <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                 <Link 
                   href="/contact" 
                   style={{
-                    background: '#C2185B',
+                    background: '#A627AE',
                     color: colors.white,
                     padding: '16px 36px',
                     borderRadius: '40px',
@@ -209,8 +198,8 @@ export default function Home() {
                   href="#services"
                   style={{
                     background: 'transparent',
-                    color: '#fff',
-                    border: '1px solid #D4AF37',
+                    color: '#1a1a1a',
+                    border: '1px solid #A627AE',
                     padding: '16px 36px',
                     borderRadius: '40px',
                     fontSize: '14px',
@@ -234,36 +223,36 @@ export default function Home() {
               <div style={{
                 width: '380px',
                 height: '380px',
-                background: 'rgba(255,255,255,0.05)',
+                background: 'rgba(166,39,174,0.04)',
                 borderRadius: '20px',
                 padding: '15px',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gridTemplateRows: 'repeat(3, 1fr)',
                 gap: '8px',
-                border: '1px solid rgba(255,255,255,0.15)',
+                border: '1px solid #A627AE30',
                 backdropFilter: 'blur(10px)',
               }}>
                 {[
-                  { src: "/images/bride_photo_1.png", rotate: '-3deg', top: '-5px' },
-                  { src: "/images/Traditional_Bengali_Bridal_Makeup_480x480.webp", rotate: '2deg', top: '3px' },
-                  { src: "/images/b1accacdf8af9c27cedc4dcb7578cf98.jpg", rotate: '-1deg', top: '-8px' },
-                  { src: "/images/2a45382ff49b2d7afd925c17839187c2.jpg", rotate: '4deg', top: '2px' },
-                  { src: "/images/2fa14c4153aa017985532c54a0200041.jpg", rotate: '-2deg', top: '-3px' },
-                  { src: "/images/premium_photo-1703483854398-93409ce5a9d9.avif", rotate: '1deg', top: '5px' },
-                  { src: "/images/bride_photo_1.png", rotate: '-4deg', top: '-2px' },
-                  { src: "/images/Traditional_Bengali_Bridal_Makeup_480x480.webp", rotate: '3deg', top: '4px' },
-                  null, // Empty space like puzzle
+                  { src: "/images/01.jpg", rotate: '-3deg', top: '-5px' },
+                  { src: "/images/02.jpg", rotate: '2deg', top: '3px' },
+                  { src: "/images/03.jpg", rotate: '-1deg', top: '-8px' },
+                  { src: "/images/04.jpg", rotate: '4deg', top: '2px' },
+                  { src: "/images/05.jpg", rotate: '-2deg', top: '-3px' },
+                  { src: "/images/06.jpg", rotate: '1deg', top: '5px' },
+                  { src: "/images/07.jpg", rotate: '-4deg', top: '-2px' },
+                  { src: "/images/08.jpg", rotate: '3deg', top: '4px' },
+                  null,
                 ].map((img, i) => img === null ? (
                     <div key={i} style={{
-                      background: 'rgba(194,37,91,0.15)',
+                      background: 'rgba(166,39,174,0.1)',
                       borderRadius: '8px',
-                      border: '2px dashed rgba(194,37,91,0.3)',
+                      border: '2px dashed #A627AE30',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                      <span style={{ fontSize: '24px', color: 'rgba(194,37,91,0.5)' }}>+</span>
+                      <span style={{ fontSize: '24px', color: '#A627AE60' }}>+</span>
                     </div>
                   ) : (
                     <div key={i} style={{
@@ -302,13 +291,13 @@ export default function Home() {
                 <div key={i} style={{
                   position: 'absolute',
                   ...item,
-                  background: '#111',
-                  border: '1px solid #D4AF37',
+                  background: '#fff',
+                  border: '1px solid #A627AE',
                   borderRadius: '12px',
                   padding: '12px 16px',
                 }}>
-                  <div style={{ fontSize: '20px', fontWeight: 600, color: '#D4AF37' }}>{item.text}</div>
-                  <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{item.label}</div>
+                  <div style={{ fontSize: '20px', fontWeight: 600, color: '#A627AE' }}>{item.text}</div>
+                  <div style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase' }}>{item.label}</div>
                 </div>
               ))}
             </div>
@@ -420,14 +409,23 @@ export default function Home() {
         </section>
 
         {/* Services Section - Gallery + Two Column List */}
-        <section id="services" style={{ padding: '100px 40px', background: colors.softCream }}>
+        <section id="services" style={{ padding: '100px 40px', position: 'relative', overflow: 'hidden' }}>
           <style>{`
-            .service-row:hover { background: rgba(194,37,91,0.08); }
+            .service-row:hover { background: rgba(194,45,204,0.08); }
+            @keyframes waveMove {
+              0% { background-position: 0% 50%; }
+              25% { background-position: 100% 25%; }
+              50% { background-position: 100% 75%; }
+              75% { background-position: 0% 50%; }
+              100% { background-position: 0% 50%; }
+            }
           `}</style>
-          
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-              <span style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', color: "#C2185B", marginBottom: '12px', display: 'block', fontWeight: 600 }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #ffffff 0%, #fafafa 50%, #f8f8f8 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 20% 30%, rgba(194,45,204,0.12) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(194,45,204,0.08) 0%, transparent 40%)', backgroundSize: '200% 200%', animation: 'waveMove 10s ease-in-out infinite' }} />
+          <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+                <span style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', color: "#C2185B", marginBottom: '12px', display: 'block', fontWeight: 600 }}>
                 What We Offer
               </span>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 5vw, 44px)', color: colors.text }}>
@@ -438,7 +436,7 @@ export default function Home() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'start' }}>
               {/* Left - Image Gallery (Hero Style) */}
               <div style={{
-                background: 'rgba(255,255,255,0.5)',
+background: 'rgba(255,255,255,0.9)',
                 borderRadius: '20px',
                 padding: '15px',
                 display: 'grid',
@@ -450,15 +448,15 @@ export default function Home() {
                 boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
               }}>
                 {[
-                  { src: "/images/bride_photo_1.png", rotate: '-3deg', top: '-4px' },
-                  { src: "/images/Traditional_Bengali_Bridal_Makeup_480x480.webp", rotate: '2deg', top: '2px' },
-                  { src: "/images/b1accacdf8af9c27cedc4dcb7578cf98.jpg", rotate: '-1deg', top: '-6px' },
-                  { src: "/images/2a45382ff49b2d7afd925c17839187c2.jpg", rotate: '3deg', top: '1px' },
-                  { src: "/images/2fa14c4153aa017985532c54a0200041.jpg", rotate: '-2deg', top: '-2px' },
-                  { src: "/images/premium_photo-1703483854398-93409ce5a9d9.avif", rotate: '1deg', top: '3px' },
-                  { src: "/images/bride_photo_1.png", rotate: '-4deg', top: '-1px' },
-                  { src: "/images/Traditional_Bengali_Bridal_Makeup_480x480.webp", rotate: '2deg', top: '3px' },
-                  { src: "/images/b1accacdf8af9c27cedc4dcb7578cf98.jpg", rotate: '-1deg', top: '-5px' },
+                  { src: "/images/01.jpg", rotate: '-3deg', top: '-4px' },
+                  { src: "/images/02.jpg", rotate: '2deg', top: '2px' },
+                  { src: "/images/03.jpg", rotate: '-1deg', top: '-6px' },
+                  { src: "/images/04.jpg", rotate: '3deg', top: '1px' },
+                  { src: "/images/05.jpg", rotate: '-2deg', top: '-2px' },
+                  { src: "/images/06.jpg", rotate: '1deg', top: '3px' },
+                  { src: "/images/07.jpg", rotate: '-4deg', top: '-1px' },
+                  { src: "/images/08.jpg", rotate: '2deg', top: '3px' },
+                  { src: "/images/09.jpg", rotate: '-1deg', top: '-5px' },
                 ].map((img, i) => (
                   <div key={i} style={{
                     position: 'relative',
@@ -488,7 +486,7 @@ export default function Home() {
               </div>
 
               {/* Right - Two Column Services List with Filters */}
-              <div>
+              <div style={{ padding: '20px', minHeight: '400px' }}>
                 {/* Filters */}
                 <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap', justifyContent: 'space-between' }}>
                   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -612,165 +610,146 @@ export default function Home() {
               </div>
             </div>
           </div>
+</div>
         </section>
 
-        {/* Trust Section - Legacy Banner */}
+        {/* Royal Section Separator */}
         <section style={{ 
-          padding: '100px 40px', 
-          background: `linear-gradient(135deg, ${colors.dark} 0%, #1a1a1a 100%)`, 
           position: 'relative', 
-          overflow: 'hidden' 
+          padding: '60px 40px', 
+          background: colors.dark,
+          overflow: 'hidden',
         }}>
           <style>{`
-            @keyframes badgeFloat {
-              0%, 100% { transform: translateY(0) rotate(0deg); }
-              50% { transform: translateY(-8px) rotate(2deg); }
+            @keyframes shimmer {
+              0% { background-position: -200% center; }
+              100% { background-position: 200% center; }
             }
-            @keyframes shine {
-              0% { left: -100%; }
-              100% { left: 100%; }
-            }
-            .legacy-card {
-              transition: all 0.4s ease;
-            }
-            .legacy-card:hover {
-              transform: translateY(-5px);
-            }
-            .shine-effect {
-              animation: shine 3s ease-in-out infinite;
+            @keyframes floatGlow {
+              0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+              50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
             }
           `}</style>
           
-          {/* Floating Decorative Elements */}
+          {/* Background Decor */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(90deg, transparent 0%, rgba(194,37,91,0.03) 50%, transparent 100%)',
+            backgroundSize: '200% 100%',
+            animation: 'shimmer 4s ease-in-out infinite',
+          }} />
+          
+          {/* Floating Ornaments */}
           {[
-            { icon: '✦', left: '5%', top: '10%', size: '32px', delay: '0s' },
-            { icon: '❋', right: '8%', top: '15%', size: '28px', delay: '0.5s' },
-            { icon: '⟡', left: '12%', bottom: '20%', size: '24px', delay: '1s' },
-            { icon: '✧', right: '15%', bottom: '10%', size: '36px', delay: '1.5s' },
+            { icon: '✦', left: '10%', top: '30%', delay: '0s' },
+            { icon: '❋', left: '20%', top: '60%', delay: '0.5s' },
+            { icon: '⟡', right: '15%', top: '25%', delay: '1s' },
+            { icon: '☾', right: '25%', top: '65%', delay: '1.5s' },
+            { icon: '✧', left: '50%', top: '20%', delay: '0.8s' },
           ].map((item, i) => (
             <div key={i} style={{
               position: 'absolute',
               left: item.left,
               right: item.right,
               top: item.top,
-              bottom: item.bottom,
-              fontSize: item.size,
+              fontSize: '20px',
               color: colors.richGold,
-              opacity: 0.15,
-              animation: `badgeFloat 4s ease-in-out infinite`,
+              opacity: 0.4,
+              animation: `floatGlow 4s ease-in-out infinite`,
               animationDelay: item.delay,
             }}>
               {item.icon}
             </div>
           ))}
           
-          {/* Main Banner */}
-          <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-            {/* Top Crown Decorations */}
-            <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-              <span style={{ fontSize: '36px', color: colors.richGold, margin: '0 8px' }}>♛</span>
-              <span style={{ fontSize: '36px', color: colors.richGold, margin: '0 8px' }}>♛</span>
-            </div>
-            
-            {/* Main Headline */}
-            <h2 style={{ 
-              fontFamily: "'Playfair Display', serif", 
-              fontSize: 'clamp(32px, 5vw, 52px)', 
-              color: colors.white,
-              textAlign: 'center',
-              marginBottom: '16px',
-              lineHeight: 1.3,
-            }}>
-              9 Years of <span style={{ color: colors.richGold }}>Trust</span> in Sylhet
-            </h2>
-            
-            {/* Subtitle */}
-            <p style={{ 
-              fontSize: '15px', 
-              color: colors.muted, 
-              textAlign: 'center',
-              maxWidth: '600px',
-              margin: '0 auto 40px',
-              lineHeight: 1.8,
-            }}>
-              Since 2016, we've built our reputation on one principle — complete customer satisfaction. Every smile, every transformation, is our legacy.
-            </p>
-
-            {/* Three Pillars */}
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(3, 1fr)', 
-              gap: '24px',
-              marginBottom: '40px',
-            }}>
-              {[
-                { 
-                  title: "500+", 
-                  subtitle: "Happy Clients", 
-                  desc: "Who trusted us with their beauty",
-                  icon: "✓"
-                },
-                { 
-                  title: "100%", 
-                  subtitle: "Satisfaction", 
-                  desc: "Our only acceptable outcome",
-                  icon: "✓"
-                },
-                { 
-                  title: "9+", 
-                  subtitle: "Years Strong", 
-                  desc: "Sylhet's beauty journey with you",
-                  icon: "✓"
-                },
-              ].map((item, i) => (
-                <div key={i} className="legacy-card" style={{
-                  textAlign: 'center',
-                  padding: '28px 20px',
-                  borderRadius: '16px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: `1px solid rgba(212,175,55,0.2)`,
-                }}>
-                  <div style={{ 
-                    fontSize: '36px', 
-                    fontFamily: "'Playfair Display', serif",
-                    color: colors.richGold,
-                    fontWeight: 600,
-                    marginBottom: '4px',
-                  }}>
-                    {item.title}
-                  </div>
-                  <div style={{ fontSize: '15px', color: colors.white, fontWeight: 600, marginBottom: '4px' }}>
-                    {item.subtitle}
-                  </div>
-                  <div style={{ fontSize: '12px', color: colors.muted }}>
-                    {item.desc}
-                  </div>
-                </div>
+          {/* Center Content */}
+          <div style={{ 
+            position: 'relative', 
+            zIndex: 2, 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '24px' 
+          }}>
+            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)' }} />
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+              {["✦", "✧", "✦"].map((s, i) => (
+                <span key={i} style={{ color: colors.richGold, fontSize: '10px', letterSpacing: '2px' }}>{s}</span>
               ))}
             </div>
+            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)' }} />
+          </div>
+        </section>
+        
+        {/* Gallery Section - Split Screen */}
+        <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', height: '60vh', background: colors.white }}>
+          {/* Left: Before/After Slider */}
+          <div style={{ position: 'relative', background: '#000', height: '100%', width: '100%' }}
+          onMouseMove={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const pos = Math.max(0, Math.min(100, x));
+            const slider = document.getElementById('slider-pos');
+            const afterImg = document.getElementById('after-img');
+            if (slider && afterImg) {
+              slider.style.left = pos + '%';
+              afterImg.style.clipPath = `inset(0 0 0 ${pos}%)`;
+            }
+          }}>
+            <img src="/images/before.jpg" alt="Before" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }} />
+            <img src="/images/after.jpg" alt="After" id="after-img" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', clipPath: 'inset(0 0 0 50%)', pointerEvents: 'none' }} />
+            <div id="slider-pos" style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', width: 4, background: '#fff', transform: 'translateX(-50%)', zIndex: 10, cursor: 'ew-resize' }}>
+              <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 48, height: 48, background: 'linear-gradient(135deg, #C22DCC, #C22DCC)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
+                <span style={{ color: '#fff', fontSize: 18 }}>↔</span>
+              </div>
+            </div>
+            <span style={{ position: 'absolute', bottom: 20, left: 20, padding: '6px 14px', background: 'rgba(0,0,0,0.7)', color: '#fff', fontSize: 12, fontWeight: 600, borderRadius: 20 }}>BEFORE</span>
+            <span style={{ position: 'absolute', bottom: 20, right: 20, padding: '6px 14px', background: 'rgba(0,0,0,0.7)', color: '#fff', fontSize: 12, fontWeight: 600, borderRadius: 20 }}>AFTER</span>
+          </div>
 
-            {/* Bottom Declaration */}
-            <div style={{ 
-              textAlign: 'center',
-              padding: '24px',
-              borderTop: `1px solid ${colors.richGold}30`,
-              borderBottom: `1px solid ${colors.richGold}30`,
-            }}>
-              <p style={{ fontSize: '14px', color: colors.muted, letterSpacing: '2px' }}>
-                <span style={{ color: colors.richGold, marginRight: '8px' }}>❋</span>
-                BECAUSE YOUR TRUST IS OUR CROWN
-                <span style={{ color: colors.richGold, marginLeft: '8px' }}>❋</span>
-              </p>
-            </div>
-            
-            {/* Bottom Crown Decorations */}
-            <div style={{ textAlign: 'center', marginTop: '24px' }}>
-              <span style={{ fontSize: '24px', color: colors.richGold, margin: '0 8px', opacity: 0.6 }}>♛</span>
-            </div>
+          {/* Right: Image Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridTemplateRows: 'repeat(3, 1fr)', gap: 2, overflow: 'hidden' }}>
+            {[
+              "/images/01.jpg", "/images/02.jpg", "/images/03.jpg", "/images/04.jpg",
+              "/images/05.jpg", "/images/06.jpg", "/images/07.jpg", "/images/08.jpg",
+              "/images/09.jpg", "/images/10.jpg", "/images/11.jpg", "/images/12.jpg",
+            ].map((src, i) => (
+              <div key={i} style={{ position: 'relative', overflow: 'hidden', minHeight: '120px' }}>
+                <img src={src} alt={`${i+1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.3s ease' }}
+                onMouseEnter={(e) => e.currentTarget.style.opacity = 1}
+                onMouseLeave={(e) => e.currentTarget.style.opacity = 0}
+                >
+                  <span style={{ color: '#fff', fontSize: 24, marginBottom: 8 }}>👁</span>
+                  <span style={{ color: '#fff', fontSize: 12, letterSpacing: '1px' }}>VIEW</span>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Gallery Section - Floating Polaroid Wall */}
+        {/* Royal Section Separator */}
+        <section style={{ position: 'relative', padding: '60px 40px', background: '#070507', overflow: 'hidden' }}>
+          <style>{`
+            @keyframes floatGlow {
+              0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+              50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+            }
+          `}</style>
+          <div style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
+            <div style={{ width: '100px', height: '1px', background: 'linear-gradient(90deg, transparent, #D4AF37)' }} />
+            <div style={{ fontSize: '28px', color: '#D4AF37', animation: 'floatGlow 3s ease-in-out infinite' }}>✦</div>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '13px', letterSpacing: '6px', color: '#fff', textTransform: 'uppercase' }}>Elegance in Every Moment</span>
+            <div style={{ fontSize: '28px', color: '#D4AF37', animation: 'floatGlow 3s ease-in-out infinite', animationDelay: '0.5s' }}>✦</div>
+            <div style={{ width: '100px', height: '1px', background: 'linear-gradient(90deg, #D4AF37, transparent)' }} />
+          </div>
+        </section>
+
+        {/* Gallery Section - Floating Polarold Wall */}
         <section style={{ padding: '120px 40px', background: colors.white, position: 'relative', overflow: 'hidden', minHeight: '800px' }}>
           <style>{`
             @keyframes float {
@@ -798,7 +777,7 @@ export default function Home() {
               width: 40px;
               height: 20px;
               background: rgba(200, 200, 200, 0.7);
-              border-radius: 2px;
+              borderRadius: 2px;
               z-index: 10;
               box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
@@ -915,9 +894,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials - Dark with Quote Cards */}
-        <section style={{ padding: '100px 40px', background: colors.dark, position: 'relative', overflow: 'hidden' }}>
+        {/* Testimonials - White with Wave Animation */}
+        <section style={{ padding: '60px 24px', position: 'relative', overflow: 'hidden' }}>
           <style>{`
+            @keyframes waveMove {
+              0% { background-position: 0% 50%; }
+              25% { background-position: 100% 25%; }
+              50% { background-position: 100% 75%; }
+              75% { background-position: 0% 50%; }
+              100% { background-position: 0% 50%; }
+            }
             @keyframes marquee {
               0% { transform: translateX(0); }
               100% { transform: translateX(-50%); }
@@ -930,12 +916,12 @@ export default function Home() {
             }
             .quote-fade {
               position: absolute;
-              top: 50%;
+              top: 35%;
               left: 50%;
               transform: translate(-50%, -50%);
-              font-size: 400px;
+              font-size: 280px;
               font-family: 'Playfair Display', serif;
-              color: rgba(194,37,91,0.08);
+              color: rgba(194,45,204,0.06);
               pointer-events: none;
               z-index: 0;
             }
@@ -943,18 +929,71 @@ export default function Home() {
           
           <div className="quote-fade">"</div>
           
+          {/* Background */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, #ffffff 0%, #fafafa 50%, #f8f8f8 100%)',
+          }} />
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(circle at 30% 20%, rgba(194,45,204,0.08) 0%, transparent 40%), radial-gradient(circle at 70% 60%, rgba(194,45,204,0.06) 0%, transparent 40%)',
+            backgroundSize: '200% 200%',
+            animation: 'waveMove 10s ease-in-out infinite',
+          }} />
+          
           <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-            <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
               <span style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: "#C2185B", marginBottom: '12px', display: 'block' }}>
                 Testimonials
               </span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 5vw, 44px)', color: colors.white }}>
-                What Our <span style={{ color: colors.richGold }}>Clients</span> Say
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 4vw, 32px)', color: '#111' }}>
+                What Our <span style={{ color: '#C22DCC' }}>Clients</span> Say
               </h2>
             </div>
 
             {/* Horizontal Scrolling Carousel */}
-            <div style={{ display: 'flex', gap: '24px', overflowX: 'auto', padding: '20px 0', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <div style={{ position: 'relative' }}>
+              <button 
+                onClick={() => document.getElementById('testimonial-scroll')?.scrollBy({ left: -320, behavior: 'smooth' })}
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: '#fff',
+                  border: '1px solid rgba(194,45,204,0.2)',
+                  cursor: 'pointer',
+                  zIndex: 10,
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  fontSize: '18px',
+                  color: '#C22DCC',
+                }}
+              >‹</button>
+              <button 
+                onClick={() => document.getElementById('testimonial-scroll')?.scrollBy({ left: 320, behavior: 'smooth' })}
+                style={{
+                  position: 'absolute',
+                  right: 0,
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: '#fff',
+                  border: '1px solid rgba(194,45,204,0.2)',
+                  cursor: 'pointer',
+                  zIndex: 10,
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  fontSize: '18px',
+                  color: '#C22DCC',
+                }}
+              >›</button>
+              <div id="testimonial-scroll" style={{ display: 'flex', gap: '16px', overflowX: 'auto', padding: '12px 24px', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               <style>{`
                 div[style*="overflow-x: auto"]::-webkit-scrollbar { display: none; }
               `}</style>
@@ -967,13 +1006,13 @@ export default function Home() {
                 { name: "Rashida Begum", text: "The best investment for self-care. Thai massage was heavenly. Total relaxation experience!", rating: 5, service: "Thai Massage" },
               ].map((review, i) => (
                 <div key={i} className="testimonial-card" style={{
-                  background: 'rgba(255,255,255,0.05)',
-                  padding: '32px',
-                  borderRadius: '20px',
-                  minWidth: '340px',
-                  maxWidth: '340px',
-                  border: '1px solid rgba(212,175,55,0.2)',
-                  backdropFilter: 'blur(10px)',
+background: '#fff',
+                  padding: '24px',
+                  borderRadius: '16px',
+                  minWidth: '300px',
+                  maxWidth: '300px',
+                  border: '1px solid rgba(194,45,204,0.15)',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
                   position: 'relative',
                 }}>
                   {/* Quote Icon */}
@@ -982,15 +1021,15 @@ export default function Home() {
                     top: '-10px', 
                     right: '24px', 
                     fontSize: '48px', 
-                    color: colors.richGold,
-                    opacity: 0.3,
+                    color: '#C22DCC',
+                    opacity: 0.2,
                     fontFamily: 'serif',
                   }}>"</div>
                   
                   {/* Stars */}
                   <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
                     {[...Array(review.rating)].map((_, j) => (
-                      <span key={j} style={{ color: colors.richGold, fontSize: '16px' }}>★</span>
+                      <span key={j} style={{ color: '#C22DCC', fontSize: '16px' }}>★</span>
                     ))}
                   </div>
                   
@@ -1009,31 +1048,32 @@ export default function Home() {
                     {review.service}
                   </div>
                   
-                  <p style={{ fontSize: '15px', color: '#cccccc', lineHeight: 1.8, marginBottom: '24px', fontStyle: 'italic' }}>
-                    "{review.text}"
-                  </p>
-                  
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <div style={{ 
-                      width: '44px', 
-                      height: '44px', 
-                      borderRadius: '50%', 
-                      background: `linear-gradient(135deg, ${colors.deepRose}, ${colors.royalPink})`,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: colors.white,
-                      fontSize: '16px',
-                      fontWeight: 600,
-                    }}>
-                      {review.name[0]}
-                    </div>
-                    <div>
-                      <p style={{ fontSize: '15px', color: colors.white, fontWeight: 600 }}>{review.name}</p>
-                    </div>
+<p style={{ fontSize: '14px', color: '#444', lineHeight: 1.7, marginBottom: '16px', fontStyle: 'italic' }}>
+                  "{review.text}"
+                </p>
+                
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ 
+                    width: '44px', 
+                    height: '44px', 
+                    borderRadius: '50%', 
+                    background: 'linear-gradient(135deg, #C22DCC, #C22DCC)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    fontSize: '16px',
+                    fontWeight: 600,
+                  }}>
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <p style={{ fontSize: '15px', color: '#111', fontWeight: 600 }}>{review.name}</p>
                   </div>
                 </div>
+                </div>
               ))}
+            </div>
             </div>
             
             {/* Navigation Dots */}
@@ -1043,7 +1083,7 @@ export default function Home() {
                   width: '8px',
                   height: '8px',
                   borderRadius: '50%',
-                  background: i === 0 ? colors.richGold : 'rgba(255,255,255,0.2)',
+                  background: i === 0 ? '#C22DCC' : 'rgba(0,0,0,0.1)',
                   transition: 'all 0.3s ease',
                 }} />
               ))}

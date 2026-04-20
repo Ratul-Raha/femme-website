@@ -6,8 +6,8 @@ import Footer from '../../components/Footer';
 
 const colors = {
   dark: "#111111",
-  deepRose: "#C2185B",
-  royalPink: "#E91E63",
+  deepRose: "#C22DCC",
+  royalPink: "#C22DCC",
   richGold: "#D4AF37",
   softCream: "#FFF8F2",
   warmIvory: "#F8EFE7",
@@ -54,7 +54,7 @@ export default function About() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'url(/images/bride_photo_1.png) center/cover no-repeat',
+            background: 'url(/images/01.jpg) center/cover no-repeat',
           }} />
           <div style={{
             position: 'absolute',
@@ -144,20 +144,53 @@ export default function About() {
               gridTemplateColumns: '1fr 1fr',
               gap: '16px',
             }}>
+              <style>{`
+                @keyframes imgFloat {
+                  0%, 100% { transform: translateY(0) rotate(var(--rotate)); }
+                  50% { transform: translateY(-10px) rotate(var(--rotate)); }
+                }
+                @keyframes imgGlow {
+                  0%, 100% { box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+                  50% { box-shadow: 0 8px 40px rgba(194,37,91,0.3), 0 0 20px rgba(212,175,55,0.2); }
+                }
+                .about-img {
+                  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                  animation: imgFloat 4s ease-in-out infinite, imgGlow 3s ease-in-out infinite;
+                  cursor: pointer;
+                }
+                .about-img:hover {
+                  transform: translateY(-15px) rotate(0deg) scale(1.05) !important;
+                  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(194,37,91,0.4) !important;
+                  z-index: 10;
+                  position: relative;
+                }
+                .about-img:hover img {
+                  transform: scale(1.1);
+                }
+                .about-img img {
+                  transition: transform 0.4s ease;
+                }
+              `}</style>
               {[
-                { src: "/images/bride_photo_1.png", rotate: '-4deg', marginTop: '30px' },
-                { src: "/images/Traditional_Bengali_Bridal_Makeup_480x480.webp", rotate: '3deg', marginTop: '0' },
-                { src: "/images/b1accacdf8af9c27cedc4dcb7578cf98.jpg", rotate: '-2deg', marginTop: '20px' },
-                { src: "/images/2a45382ff49b2d7afd925c17839187c2.jpg", rotate: '4deg', marginTop: '-10px' },
+                { src: "/images/01.jpg", rotate: '-4deg', marginTop: '30px', delay: '0s' },
+                { src: "/images/02.jpg", rotate: '3deg', marginTop: '0', delay: '0.5s' },
+                { src: "/images/03.jpg", rotate: '-2deg', marginTop: '20px', delay: '1s' },
+                { src: "/images/04.jpg", rotate: '4deg', marginTop: '-10px', delay: '1.5s' },
               ].map((img, i) => (
-                <div key={i} style={{
-                  height: '280px',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  marginTop: img.marginTop,
-                  transform: `rotate(${img.rotate})`,
-                  boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
-                }}>
+                <div 
+                  key={i} 
+                  className="about-img"
+                  style={{
+                    height: '280px',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    marginTop: img.marginTop,
+                    transform: `rotate(${img.rotate})`,
+                    '--rotate': img.rotate,
+                    boxShadow: '0 8px 30px rgba(0,0,0,0.15)',
+                    animationDelay: img.delay,
+                  }}
+                >
                   <img src={img.src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
               ))}

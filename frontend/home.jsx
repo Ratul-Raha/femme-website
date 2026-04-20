@@ -129,6 +129,25 @@ function Navbar() {
   );
 }
 
+// ── Animated Wave SVG ─────────────────────────────────────────────────────
+function WaveSVG() {
+  return (
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" style={{
+      position: "absolute", bottom: 0, left: 0, width: "100%", height: "80px",
+    }}>
+      <path
+        d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,60 1440,60 L1440,120 L0,120 Z"
+        fill={colors.cream}
+      />
+      <path
+        d="M0,80 C480,140 960,20 1440,80 L1440,120 L0,120 Z"
+        fill={colors.blush}
+        opacity="0.3"
+      />
+    </svg>
+  );
+}
+
 // ── Hero ───────────────────────────────────────────────────────────────────
 function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -142,10 +161,10 @@ function Hero() {
 
   return (
     <section style={{
-      background: colors.cream,
+      background: "linear-gradient(180deg, #fff 0%, #fdf6f8 100%)",
       minHeight: "100vh",
       display: "flex", alignItems: "center", justifyContent: "space-between",
-      padding: "100px 40px 60px",
+      padding: "100px 40px 80px",
       gap: "40px", flexWrap: "wrap",
       position: "relative", overflow: "hidden",
     }}>
@@ -165,6 +184,7 @@ function Hero() {
         width: "200px", height: "200px", borderRadius: "50%",
         background: colors.blush, opacity: 0.15, pointerEvents: "none",
       }} />
+      <WaveSVG />
 
       {/* Content */}
       <div style={{ flex: 1, maxWidth: "520px", position: "relative", zIndex: 2 }}>
@@ -386,7 +406,16 @@ function Services() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <section ref={ref} style={{ padding: "80px 40px", background: "#fff" }}>
+    <section ref={ref} style={{
+      padding: "80px 40px 100px",
+      background: "linear-gradient(180deg, #fff 0%, #fbeaf0 50%, #f5d0de 100%)",
+      position: "relative",
+    }}>
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{
+        position: "absolute", top: 0, left: 0, width: "100%", height: "80px",
+      }}>
+        <path d="M0,40 C360,0 720,80 1080,40 C1260,20 1380,40 1440,40 L1440,0 L0,0 Z" fill="#fff" />
+      </svg>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "12px", marginBottom: "40px" }}>
         <SectionHeader label="Our offerings" title="Everything you deserve" />
         <Link href="/services" style={{
@@ -518,6 +547,28 @@ function AboutTeaser() {
   );
 }
 
+// ── Royal Section Separator ─────────────────────────────────────────────────
+function RoyalSeparator() {
+  return (
+    <section style={{
+      background: colors.deep,
+      padding: "24px 40px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "20px",
+    }}>
+      <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, rgba(201,113,142,0.4), transparent)" }} />
+      <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+        {["♦", "✧", "♦"].map((s, i) => (
+          <span key={i} style={{ color: colors.mauve, fontSize: "10px", letterSpacing: "2px" }}>{s}</span>
+        ))}
+      </div>
+      <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, rgba(201,113,142,0.4), transparent)" }} />
+    </section>
+  );
+}
+
 // ── Reviews ────────────────────────────────────────────────────────────────
 const REVIEWS = [
   { name: "Nusrat Rahman", initials: "NR", service: "Bridal makeup", rating: 5, text: "The bridal package was absolutely perfect. Every detail was taken care of and the team made me feel so special on my big day." },
@@ -568,67 +619,99 @@ function Reviews() {
   );
 }
 
-// ── Gallery Teaser ─────────────────────────────────────────────────────────
-const GALLERY_ITEMS = [
-  { cat: "Bridal look", bg: colors.rose, span: "tall" },
+// ── Gallery Section with Split Layout ──────────────────────────────────
+const GALLERY_IMAGES = [
+  { cat: "Bridal look", bg: colors.rose },
   { cat: "Herbal facial", bg: colors.blush },
   { cat: "Hair colour", bg: "#d4908a" },
-  { cat: "Studio interior", bg: "#fbeaf0", span: "wide" },
-  { cat: "Yoga class", bg: "#fdf6f8", border: true },
+  { cat: "Studio interior", bg: "#fbeaf0" },
+  { cat: "Yoga class", bg: "#fdf6f8" },
   { cat: "Party makeup", bg: colors.mauve },
+  { cat: "Spa treatment", bg: colors.rose },
+  { cat: "Nail art", bg: "#fbeaf0" },
+  { cat: "Facial care", bg: colors.blush },
+  { cat: "Hair styling", bg: "#d4908a" },
+  { cat: "Massage", bg: colors.mauve },
+  { cat: "Yoga session", bg: "#fdf6f8" },
 ];
 
-function GalleryTeaser() {
+function GallerySection() {
   const [ref, visible] = useInView();
   return (
     <section ref={ref} style={{ padding: "80px 40px", background: "#fff" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "12px", marginBottom: "32px" }}>
-        <SectionHeader label="A glimpse inside" title="Our gallery" />
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "12px", marginBottom: "40px" }}>
+        <SectionHeader label="Our work" title="Gallery" />
         <Link href="/gallery" style={{
           background: "transparent", color: colors.burgundy,
           border: `1.5px solid ${colors.mauve}`,
           padding: "9px 20px", borderRadius: "30px",
           fontSize: "12px", fontWeight: 500, textDecoration: "none",
-          marginBottom: "40px",
         }}>
-          See full gallery
+          View all
         </Link>
       </div>
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-        gridTemplateRows: "160px 160px",
-        gap: "12px",
+        gridTemplateColumns: "380px 1fr",
+        gap: "24px",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(30px)",
         transition: "opacity 0.7s ease, transform 0.7s ease",
       }}>
-        {GALLERY_ITEMS.map(({ cat, bg, span, border }, i) => (
-          <div key={cat} style={{
-            gridRow: span === "tall" ? "span 2" : "span 1",
-            gridColumn: span === "wide" ? "span 2" : "span 1",
-            background: bg, borderRadius: "14px",
-            border: border ? `0.5px solid #e8d5dc` : "none",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            position: "relative", overflow: "hidden", cursor: "pointer",
-          }}
-            onMouseEnter={(e) => e.currentTarget.querySelector(".overlay").style.opacity = "1"}
-            onMouseLeave={(e) => e.currentTarget.querySelector(".overlay").style.opacity = "0"}>
-            <span style={{ fontSize: "11px", fontWeight: 500, color: colors.burgundy, letterSpacing: "1.5px", textTransform: "uppercase" }}>
-              {cat}
-            </span>
-            <div className="overlay" style={{
-              position: "absolute", inset: 0,
-              background: "rgba(74,26,46,0.55)",
+        {/* Left: Before/After */}
+        <div style={{
+          display: "flex", flexDirection: "column", gap: "12px",
+        }}>
+          <div style={{
+            flex: 1, background: colors.rose, borderRadius: "16px",
+            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+            position: "relative", overflow: "hidden",
+            minHeight: "240px",
+          }}>
+            <span style={{ fontSize: "10px", letterSpacing: "2px", textTransform: "uppercase", color: colors.burgundy, marginBottom: "8px", fontWeight: 500 }}>Before</span>
+            <FaceSVG size={140} />
+          </div>
+          <div style={{
+            flex: 1, background: colors.blush, borderRadius: "16px",
+            display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+            position: "relative", overflow: "hidden",
+            minHeight: "240px",
+          }}>
+            <span style={{ fontSize: "10px", letterSpacing: "2px", textTransform: "uppercase", color: colors.burgundy, marginBottom: "8px", fontWeight: 500 }}>After</span>
+            <FaceSVG size={140} />
+          </div>
+        </div>
+        {/* Right: 12 Images Grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gridTemplateRows: "repeat(4, 1fr)",
+          gap: "10px",
+        }}>
+          {GALLERY_IMAGES.map(({ cat, bg }, i) => (
+            <div key={cat} style={{
+              background: bg, borderRadius: "12px",
               display: "flex", alignItems: "center", justifyContent: "center",
-              opacity: 0, transition: "opacity 0.2s", borderRadius: "14px",
-            }}>
-              <span style={{ color: "#fff", fontSize: "12px", letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 500 }}>
+              position: "relative", overflow: "hidden", cursor: "pointer",
+            }}
+              onMouseEnter={(e) => e.currentTarget.querySelector(".overlay").style.opacity = "1"}
+              onMouseLeave={(e) => e.currentTarget.querySelector(".overlay").style.opacity = "0"}>
+              <span style={{ fontSize: "9px", fontWeight: 500, color: colors.burgundy, letterSpacing: "1px", textTransform: "uppercase" }}>
                 {cat}
               </span>
+              <div className="overlay" style={{
+                position: "absolute", inset: 0,
+                background: "rgba(74,26,46,0.6)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                opacity: 0, transition: "opacity 0.2s", borderRadius: "12px",
+              }}>
+                <span style={{ color: "#fff", fontSize: "10px", letterSpacing: "1px", textTransform: "uppercase", fontWeight: 500 }}>
+                  {cat}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -820,8 +903,9 @@ export default function Home() {
         <Services />
         <AboutTeaser />
         <Reviews />
+        <GallerySection />
+        <RoyalSeparator />
         <MagicMoments />
-        <GalleryTeaser />
         <CtaBanner />
       </main>
       <Footer />

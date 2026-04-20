@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
-import AdminLayout from '../../components/AdminLayout';
+import AdminLayout from '../../../components/AdminLayout';
 
 const colors = {
   dark: "#1a1a2e",
