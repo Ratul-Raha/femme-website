@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -121,7 +121,7 @@ export default function Home() {
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #ffffff 0%, #fefefe 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 20%, rgba(166,39,174,0.1) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(166,39,174,0.06) 0%, transparent 50%)', backgroundSize: '200% 200%', animation: 'waterFlow 10s ease-in-out infinite' }} />
         
-        {/* Hero Section - Full Screen Image */}
+{/* Hero Section */}
         <section style={{
           minHeight: '100vh',
           position: 'relative',
@@ -130,138 +130,151 @@ export default function Home() {
           justifyContent: 'center',
           overflow: 'hidden',
           background: 'url(/images/01.jpg) center/cover no-repeat',
-          paddingTop: '90px',
+          paddingTop: '100px',
         }}>
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.88) 100%)' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 20%, rgba(166,39,174,0.08) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(166,39,174,0.04) 0%, transparent 50%)', backgroundSize: '200% 200%', animation: 'waveMove 10s ease-in-out infinite' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(26,26,26,0.95) 0%, rgba(74,26,46,0.9) 50%, rgba(194,37,91,0.85) 100%)' }} />
+          
+          {/* Decorative Elements */}
+          <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+            <div style={{ position: 'absolute', top: '15%', left: '8%', fontSize: '120px', color: 'rgba(212,175,55,0.15)', fontFamily: "'Playfair Display', serif", animation: 'float 6s ease-in-out infinite' }}>✦</div>
+            <div style={{ position: 'absolute', bottom: '20%', right: '10%', fontSize: '80px', color: 'rgba(212,175,55,0.12)', fontFamily: "'Playfair Display', serif", animation: 'float 8s ease-in-out infinite 1s' }}>✧</div>
+          </div>
+
+          <style>{`
+            @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+          `}</style>
           
           <div style={{
             maxWidth: '1200px',
             width: '100%',
+            margin: '0 auto',
             position: 'relative',
             zIndex: 2,
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
+            gridTemplateColumns: '1fr 460px',
             gap: '60px',
             alignItems: 'center',
-            padding: '120px 0',
+            padding: '80px 40px',
           }}>
-            <div>
-<div style={{
-                fontSize: '12px',
-                letterSpacing: '3px',
-                color: "#666",
-                marginBottom: '24px',
-              }}>
-                beauty . lifestyle . care
+            <div style={{ maxWidth: '560px' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                <div style={{ width: '40px', height: '1px', background: 'linear-gradient(90deg, transparent, #D4AF37)' }} />
+                <span style={{ fontSize: '11px', letterSpacing: '4px', color: '#D4AF37', textTransform: 'uppercase' }}>Sylhet's Premier Beauty Lounge</span>
+                <div style={{ width: '40px', height: '1px', background: 'linear-gradient(90deg, #D4AF37, transparent)' }} />
               </div>
-               
+                
               <h1 style={{
                 fontFamily: "'Playfair Display', serif",
                 fontSize: 'clamp(42px, 6vw, 64px)',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.1,
-                color: '#1a1a1a',
+                color: '#ffffff',
                 marginBottom: '24px',
               }}>
-                Where Beauty <span style={{ color: '#D4AF37' }}>Meets</span>
-                <br /><span style={{ color: "#A627AE", fontStyle: 'italic' }}>Royal Care</span>
+                Where Beauty <span style={{ color: '#D4AF37', fontStyle: 'italic', fontWeight: 300 }}>Shines</span>
+                <br /><span style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.9)', fontWeight: 300 }}>Brighter</span>
               </h1>
-               
+                
               <p style={{
-                fontSize: '16px',
-                color: '#555',
-                lineHeight: 1.8,
-                maxWidth: '440px',
-                marginBottom: '40px',
+                fontSize: '15px',
+                color: 'rgba(255,255,255,0.75)',
+                lineHeight: 1.7,
+                maxWidth: '460px',
+                marginBottom: '36px',
               }}>
-                Experience the finest beauty treatments in Sylhet. Your transformation begins at Sylhet's most trusted premium beauty parlour.
+                Experience luxury beauty treatments at Sylhet's most trusted premium salon. From bridal makeovers to relaxing spa therapies.
               </p>
-               
+                
               <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                 <Link 
                   href="/contact" 
                   style={{
-                    background: '#A627AE',
-                    color: colors.white,
-                    padding: '16px 36px',
-                    borderRadius: '40px',
-                    fontSize: '14px',
+                    background: 'linear-gradient(135deg, #D4AF37 0%, #B8962F 100%)',
+                    color: '#1a1a1a',
+                    padding: '14px 32px',
+                    borderRadius: '30px',
+                    fontSize: '12px',
                     fontWeight: 600,
                     textDecoration: 'none',
                     letterSpacing: '1px',
-                    display: 'inline-block',
+                    textTransform: 'uppercase',
+                    boxShadow: '0 6px 20px rgba(212,175,55,0.4)',
                   }}>
-                  Book Appointment
+                  Book Now
                 </Link>
                 <Link 
                   href="#services"
                   style={{
-                    background: 'transparent',
-                    color: '#1a1a1a',
-                    border: '1px solid #A627AE',
-                    padding: '16px 36px',
-                    borderRadius: '40px',
-                    fontSize: '14px',
+                    background: 'rgba(255,255,255,0.1)',
+                    color: '#ffffff',
+                    border: '1px solid rgba(255,255,255,0.3)',
+                    padding: '14px 32px',
+                    borderRadius: '30px',
+                    fontSize: '12px',
                     fontWeight: 500,
                     textDecoration: 'none',
+                    letterSpacing: '1px',
+                    textTransform: 'uppercase',
                   }}>
-                  Our Services
+                  Services
                 </Link>
+              </div>
+
+              <div style={{ display: 'flex', gap: '36px', marginTop: '40px' }}>
+                {[{ value: '5000+', label: 'Happy Clients' }, { value: '8+', label: 'Years' }, { value: '4.9★', label: 'Rating' }].map((stat, i) => (
+                  <div key={i}>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', color: '#D4AF37', fontWeight: 600 }}>{stat.value}</div>
+                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.6)', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '4px' }}>{stat.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
 
-<div style={{
-              position: 'relative',
-              height: '520px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-            }}>
-              {/* Sticky Notes Grid */}
+            <div style={{ position: 'relative', height: '480px', width: '460px' }}>
               <div style={{
-                width: '420px',
-                height: '420px',
-                background: 'rgba(166,39,174,0.04)',
+                width: '460px',
+                height: '460px',
+                background: 'rgba(255,255,255,0.08)',
                 borderRadius: '20px',
-                padding: '15px',
+                padding: '14px',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gridTemplateRows: 'repeat(3, 1fr)',
                 gap: '10px',
-                border: '1px solid #A627AE30',
+                border: '1px solid rgba(255,255,255,0.15)',
                 backdropFilter: 'blur(10px)',
+                boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
               }}>
                 {[
-                  { src: "/images/01.jpg", rotate: '-3deg', top: '-5px' },
-                  { src: "/images/02.jpg", rotate: '2deg', top: '3px' },
-                  { src: "/images/03.jpg", rotate: '-1deg', top: '-8px' },
-                  { src: "/images/04.jpg", rotate: '4deg', top: '2px' },
-                  { src: "/images/05.jpg", rotate: '-2deg', top: '-3px' },
+                  { src: "/images/01.jpg", rotate: '-4deg', top: '-6px' },
+                  { src: "/images/02.jpg", rotate: '3deg', top: '4px' },
+                  { src: "/images/03.jpg", rotate: '-2deg', top: '-4px' },
+                  { src: "/images/04.jpg", rotate: '2deg', top: '3px' },
+                  { src: "/images/05.jpg", rotate: '-3deg', top: '-2px' },
                   { src: "/images/06.jpg", rotate: '1deg', top: '5px' },
-                  { src: "/images/07.jpg", rotate: '-4deg', top: '-2px' },
-                  { src: "/images/08.jpg", rotate: '3deg', top: '4px' },
+                  { src: "/images/07.jpg", rotate: '-2deg', top: '-5px' },
+                  { src: "/images/08.jpg", rotate: '4deg', top: '2px' },
                   null,
                 ].map((img, i) => img === null ? (
-                    <div key={i} style={{
-                      background: 'rgba(166,39,174,0.1)',
-                      borderRadius: '8px',
-                      border: '2px dashed #A627AE30',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                      <span style={{ fontSize: '24px', color: '#A627AE60' }}>+</span>
-                    </div>
-                  ) : (
-                    <div key={i} style={{
-                      position: 'relative',
-                      top: img.top,
-                      transform: `rotate(${img.rotate})`,
-                      borderRadius: '8px',
-                      overflow: 'hidden',
-                      boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
-                      transition: 'transform 0.3s ease',
+                  <div key={i} style={{
+                    background: 'rgba(255,255,255,0.08)',
+                    borderRadius: '6px',
+                    border: '2px dashed rgba(255,255,255,0.25)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    <span style={{ fontSize: '24px', color: 'rgba(255,255,255,0.4)' }}>+</span>
+                  </div>
+                ) : (
+                  <div key={i} style={{
+                    position: 'relative',
+                    top: img.top,
+                    transform: `rotate(${img.rotate})`,
+                    borderRadius: '6px',
+                    overflow: 'hidden',
+                    boxShadow: '0 3px 12px rgba(0,0,0,0.3)',
+                    transition: 'transform 0.3s ease',
                       cursor: 'pointer',
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.transform = `rotate(0deg) scale(1.05)`}
@@ -925,10 +938,28 @@ background: '#fff',
                   background: i === 0 ? '#C22DCC' : 'rgba(0,0,0,0.1)',
                   transition: 'all 0.3s ease',
                 }} />
-              ))}
+))}
+              </div>
+
+              {/* Floating Badge - Outside Image Wrapper */}
+              <div style={{
+                position: 'absolute',
+                bottom: '20px',
+                right: '-20px',
+                background: '#D4AF37',
+                borderRadius: '16px',
+                padding: '14px 20px',
+                boxShadow: '0 10px 30px rgba(212,175,55,0.5)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                zIndex: 10,
+              }}>
+                <span style={{ fontSize: '20px' }}>✨</span>
+                <span style={{ fontSize: '13px', fontWeight: 700, color: '#1a1a1a' }}>50+ Services</span>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
         {/* Royal Section Separator */}
         <section style={{ 
