@@ -21,7 +21,7 @@ export default function Navbar() {
       right: 0,
       zIndex: 1000,
       padding: '0 40px',
-      height: '80px',
+      height: '90px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -50,7 +50,7 @@ export default function Navbar() {
                 href={item.path}
                 style={{
                   fontSize: '12px',
-                  color: isActive ? '#C22DCC' : 'rgba(255,255,255,0.75)',
+                  color: isActive ? '#D4AF37' : 'rgba(255,255,255,0.75)',
                   textDecoration: 'none',
                   letterSpacing: '1.5px',
                   textTransform: 'uppercase',
@@ -63,18 +63,10 @@ export default function Navbar() {
           })}
         </div>
 
-        <Link href="/contact" style={{
-          background: '#D4AF37',
-          color: '#070507',
-          padding: '10px 24px',
-          borderRadius: '30px',
-          fontSize: '12px',
-          fontWeight: 600,
-          textDecoration: 'none',
-          letterSpacing: '1px',
-        }}>
-          Contact
-        </Link>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: '#fff' }}>
+          <span>📞</span>
+          <span style={{ letterSpacing: '1px' }}>01342366756</span>
+        </div>
       </div>
     </nav>
   );

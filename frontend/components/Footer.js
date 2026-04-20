@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const colors = {
-  dark: "#1a1a2e",
+  dark: "#000000",
   purple: "#16213e",
   gold: "#e8b87d",
   cream: "#faf3e8",

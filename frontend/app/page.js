@@ -671,17 +671,21 @@ background: 'rgba(255,255,255,0.9)',
             position: 'relative', 
             zIndex: 2, 
             display: 'flex', 
+            flexDirection: 'column',
             alignItems: 'center', 
             justifyContent: 'center', 
-            gap: '24px' 
+            gap: '16px' 
           }}>
-            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)' }} />
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-              {["✦", "✧", "✦"].map((s, i) => (
-                <span key={i} style={{ color: colors.richGold, fontSize: '10px', letterSpacing: '2px' }}>{s}</span>
-              ))}
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', color: '#fff', letterSpacing: '4px' }}>Beauty . Lifestyle . Care</span>
+            <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+              <div style={{ width: '80px', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)' }} />
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                {["✦", "✧", "✦"].map((s, i) => (
+                  <span key={i} style={{ color: colors.richGold, fontSize: '10px', letterSpacing: '2px' }}>{s}</span>
+                ))}
+              </div>
+              <div style={{ width: '80px', height: '1px', background: 'linear-gradient(90deg, rgba(212,175,55,0.4), transparent)' }} />
             </div>
-            <div style={{ flex: 1, height: '1px', background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)' }} />
           </div>
         </section>
         
@@ -749,151 +753,6 @@ background: 'rgba(255,255,255,0.9)',
           </div>
         </section>
 
-        {/* Gallery Section - Floating Polarold Wall */}
-        <section style={{ padding: '120px 40px', background: colors.white, position: 'relative', overflow: 'hidden', minHeight: '800px' }}>
-          <style>{`
-            @keyframes float {
-              0%, 100% { transform: translateY(0px) rotate(var(--rotate)); }
-              50% { transform: translateY(-20px) rotate(var(--rotate)); }
-            }
-            @keyframes shimmer {
-              0% { background-position: -200% center; }
-              100% { background-position: 200% center; }
-            }
-            .polaroid {
-              transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-            }
-            .polaroid:hover {
-              transform: rotate(0deg) scale(1.15) translateY(-10px) !important;
-              box-shadow: 0 30px 60px rgba(0,0,0,0.3) !important;
-              z-index: 100 !important;
-            }
-            .polaroid::before {
-              content: '';
-              position: absolute;
-              top: -15px;
-              left: 50%;
-              transform: translateX(-50%);
-              width: 40px;
-              height: 20px;
-              background: rgba(200, 200, 200, 0.7);
-              borderRadius: 2px;
-              z-index: 10;
-              box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            }
-            .polaroid img {
-              transition: transform 0.4s ease;
-            }
-            .polaroid:hover img {
-              transform: scale(1.05);
-            }
-            .gallery-glow {
-              animation: shimmer 3s linear infinite;
-              background: linear-gradient(90deg, transparent, rgba(194,37,91,0.1), transparent);
-              background-size: 200% 100%;
-            }
-          `}</style>
-          
-          <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-            <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-              <span style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: "#C2185B", marginBottom: '16px', display: 'block' }}>
-                Our Work
-              </span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 5vw, 48px)', color: colors.text }}>
-                Moments of Magic
-              </h2>
-            </div>
-
-            {/* Floating Polaroid Wall */}
-            <div style={{ position: 'relative', height: '600px' }}>
-              {[
-                { src: "/images/bride_photo_1.png", rotate: '-12deg', top: '5%', left: '3%', width: '180px', delay: '0s' },
-                { src: "/images/Traditional_Bengali_Bridal_Makeup_480x480.webp", rotate: '8deg', top: '8%', left: '18%', width: '200px', delay: '0.2s' },
-                { src: "/images/b1accacdf8af9c27cedc4dcb7578cf98.jpg", rotate: '-5deg', top: '3%', left: '38%', width: '160px', delay: '0.4s' },
-                { src: "/images/2a45382ff49b2d7afd925c17839187c2.jpg", rotate: '10deg', top: '12%', left: '55%', width: '190px', delay: '0.1s' },
-                { src: "/images/2fa14c4153aa017985532c54a0200041.jpg", rotate: '-7deg', top: '5%', left: '75%', width: '175px', delay: '0.3s' },
-                { src: "/images/premium_photo-1703483854398-93409ce5a9d9.avif", rotate: '3deg', top: '15%', left: '88%', width: '140px', delay: '0.5s' },
-                { src: "/images/bride_photo_1.png", rotate: '-9deg', top: '35%', left: '5%', width: '170px', delay: '0.6s' },
-                { src: "/images/Traditional_Bengali_Bridal_Makeup_480x480.webp", rotate: '6deg', top: '40%', left: '22%', width: '185px', delay: '0.15s' },
-                { src: "/images/b1accacdf8af9c27cedc4dcb7578cf98.jpg", rotate: '-3deg', top: '38%', left: '42%', width: '155px', delay: '0.35s' },
-                { src: "/images/2a45382ff49b2d7afd925c17839187c2.jpg", rotate: '12deg', top: '45%', left: '60%', width: '195px', delay: '0.25s' },
-                { src: "/images/2fa14c4153aa017985532c54a0200041.jpg", rotate: '-6deg', top: '35%', left: '80%', width: '150px', delay: '0.45s' },
-                { src: "/images/premium_photo-1703483854398-93409ce5a9d9.avif", rotate: '4deg', top: '55%', left: '2%', width: '165px', delay: '0.55s' },
-                { src: "/images/bride_photo_1.png", rotate: '-11deg', top: '65%', left: '18%', width: '180px', delay: '0.7s' },
-                { src: "/images/Traditional_Bengali_Bridal_Makeup_480x480.webp", rotate: '7deg', top: '70%', left: '38%', width: '170px', delay: '0.2s' },
-                { src: "/images/b1accacdf8af9c27cedc4dcb7578cf98.jpg", rotate: '-4deg', top: '60%', left: '58%', width: '145px', delay: '0.4s' },
-                { src: "/images/2a45382ff49b2d7afd925c17839187c2.jpg", rotate: '9deg', top: '75%', left: '78%', width: '185px', delay: '0.1s' },
-                { src: "/images/2fa14c4153aa017985532c54a0200041.jpg", rotate: '-8deg', top: '55%', left: '85%', width: '130px', delay: '0.3s' },
-                { src: "/images/premium_photo-1703483854398-93409ce5a9d9.avif", rotate: '5deg', top: '80%', left: '8%', width: '155px', delay: '0.5s' },
-              ].map((img, i) => (
-                <div 
-                  key={i} 
-                  className="polaroid"
-                  style={{
-                    position: 'absolute',
-                    top: img.top,
-                    left: img.left,
-                    width: img.width,
-                    padding: '12px 12px 35px 12px',
-                    background: '#fff',
-                    boxShadow: '0 8px 25px rgba(0,0,0,0.2)',
-                    transform: `rotate(${img.rotate})`,
-                    '--rotate': img.rotate,
-                    animation: `float 6s ease-in-out infinite`,
-                    animationDelay: img.delay,
-                  }}
-                >
-                  <div style={{ 
-                    width: '100%', 
-                    aspectRatio: '1/1', 
-                    overflow: 'hidden',
-                    borderRadius: '2px',
-                  }}>
-                    <img 
-                      src={img.src} 
-                      alt={`Work ${i+1}`} 
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-              
-              {/* Decorative elements */}
-              <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '400px',
-                height: '400px',
-                borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(194,37,91,0.05) 0%, transparent 70%)',
-                pointerEvents: 'none',
-              }} />
-            </div>
-
-            <div style={{ textAlign: 'center', marginTop: '60px' }}>
-              <Link href="/gallery" style={{
-                background: '#C2185B',
-                color: colors.white,
-                padding: '14px 32px',
-                borderRadius: '30px',
-                fontSize: '14px',
-                fontWeight: 600,
-                textDecoration: 'none',
-                display: 'inline-block',
-                boxShadow: '0 4px 15px rgba(194,37,91,0.3)',
-              }}>
-                View Full Gallery
-              </Link>
-            </div>
-          </div>
-        </section>
-
         {/* Testimonials - White with Wave Animation */}
         <section style={{ padding: '60px 24px', position: 'relative', overflow: 'hidden' }}>
           <style>{`
@@ -943,7 +802,7 @@ background: 'rgba(255,255,255,0.9)',
             animation: 'waveMove 10s ease-in-out infinite',
           }} />
           
-          <div style={{ maxWidth: '1400px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
             <div style={{ textAlign: 'center', marginBottom: '32px' }}>
               <span style={{ fontSize: '11px', letterSpacing: '4px', textTransform: 'uppercase', color: "#C2185B", marginBottom: '12px', display: 'block' }}>
                 Testimonials
@@ -1091,82 +950,158 @@ background: '#fff',
           </div>
         </section>
 
-        {/* Contact Section - Dark */}
-        <section style={{ padding: '100px 60px', background: colors.dark }}>
-          <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
-            <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-              <span style={{ fontSize: '12px', letterSpacing: '3px', textTransform: 'uppercase', color: "#C2185B", marginBottom: '12px', display: 'block' }}>
+        {/* Royal Section Separator */}
+        <section style={{ 
+          position: 'relative', 
+          padding: '60px 40px', 
+          background: colors.dark,
+          overflow: 'hidden',
+        }}>
+          <style>{`
+            @keyframes floatGlow {
+              0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+              50% { transform: translateY(-10px) scale(1.1); opacity: 1; }
+            }
+          `}</style>
+          
+          <div style={{ 
+            position: 'relative', 
+            zIndex: 2, 
+            display: 'flex', 
+            flexDirection: 'column',
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            gap: '16px' 
+          }}>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', color: '#fff', letterSpacing: '4px' }}>Beauty . Lifestyle . Care</span>
+            <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+              <div style={{ width: '80px', height: '1px', background: 'linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent)' }} />
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                {["✦", "✧", "✦"].map((s, i) => (
+                  <span key={i} style={{ color: colors.richGold, fontSize: '10px', letterSpacing: '2px' }}>{s}</span>
+                ))}
+              </div>
+              <div style={{ width: '80px', height: '1px', background: 'linear-gradient(90deg, rgba(212,175,55,0.4), transparent)' }} />
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section - With Gradient Animation */}
+        <section style={{ padding: '100px 40px', position: 'relative', overflow: 'hidden' }}>
+          <style>{`
+            @keyframes waveMove {
+              0% { background-position: 0% 50%; }
+              25% { background-position: 100% 25%; }
+              50% { background-position: 100% 75%; }
+              75% { background-position: 0% 50%; }
+              100% { background-position: 0% 50%; }
+            }
+          `}</style>
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #ffffff 0%, #fafafa 50%, #f8f8f8 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 20% 30%, rgba(166,39,174,0.12) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(166,39,174,0.08) 0%, transparent 40%)', backgroundSize: '200% 200%', animation: 'waveMove 10s ease-in-out infinite' }} />
+          
+          <div style={{ maxWidth: '1000px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+            <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+              <span style={{ fontSize: '11px', letterSpacing: '3px', textTransform: 'uppercase', color: "#A627AE", marginBottom: '12px', display: 'block', fontWeight: 600 }}>
                 Get In Touch
               </span>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 5vw, 44px)', color: colors.white }}>
-                Start Your <span style={{ color: colors.richGold }}>Journey</span> Today
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 5vw, 44px)', color: '#1a1a1a' }}>
+                Start Your <span style={{ color: '#A627AE' }}>Journey</span> Today
               </h2>
+              <p style={{ fontSize: '15px', color: '#666', marginTop: '16px', maxWidth: '500px', margin: '16px auto 0' }}>
+                Book your appointment or reach out for any inquiries. We're here to help you look and feel your best.
+              </p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px', alignItems: 'start' }}>
-              <div style={{ background: colors.white, padding: '32px', borderRadius: '20px', borderTop: `3px solid ${colors.richGold}` }}>
-                <h3 style={{ fontSize: '18px', color: colors.text, marginBottom: '20px' }}>Send a Message</h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '32px', alignItems: 'start' }}>
+              {/* Contact Info */}
+              <div style={{ padding: '32px', borderRadius: '20px', border: '1px solid rgba(166,39,174,0.2)' }}>
+                <h3 style={{ fontSize: '18px', color: '#1a1a1a', marginBottom: '24px', fontFamily: "'Playfair Display', serif" }}>Contact Information</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(166,39,174,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontSize: '18px' }}>📍</span>
+                    </div>
+                    <div>
+                      <p style={{ fontSize: '12px', color: '#A627AE', fontWeight: 600, marginBottom: '2px' }}>Location</p>
+                      <p style={{ fontSize: '14px', color: '#333' }}>Sylhet, Bangladesh</p>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(166,39,174,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontSize: '18px' }}>📧</span>
+                    </div>
+                    <div>
+                      <p style={{ fontSize: '12px', color: '#A627AE', fontWeight: 600, marginBottom: '2px' }}>Email</p>
+                      <p style={{ fontSize: '14px', color: '#333' }}>hello@femmebd.com</p>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(166,39,174,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontSize: '18px' }}>📞</span>
+                    </div>
+                    <div>
+                      <p style={{ fontSize: '12px', color: '#A627AE', fontWeight: 600, marginBottom: '2px' }}>Phone</p>
+                      <p style={{ fontSize: '14px', color: '#333' }}>+880 XXX XXXXXX</p>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(166,39,174,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span style={{ fontSize: '18px' }}>🕘</span>
+                    </div>
+                    <div>
+                      <p style={{ fontSize: '12px', color: '#A627AE', fontWeight: 600, marginBottom: '2px' }}>Hours</p>
+                      <p style={{ fontSize: '14px', color: '#333' }}>Daily: 9AM - 8PM</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contact Form */}
+              <div style={{ background: '#fff', padding: '32px', borderRadius: '20px', borderTop: '3px solid #A627AE' }}>
+                <h3 style={{ fontSize: '18px', color: '#1a1a1a', marginBottom: '20px', fontFamily: "'Playfair Display', serif" }}>Send a Message</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'stretch' }}>
                   <input type="text" placeholder="Your Name" style={{ 
                     padding: '14px 16px', 
                     borderRadius: '10px', 
-                    border: `1px solid ${colors.champagne}`,
-                    background: colors.softCream,
-                    color: colors.text,
+                    border: '1px solid rgba(166,39,174,0.3)',
+                    background: '#fafafa',
+                    color: '#333',
                     fontSize: '14px',
+                    outline: 'none',
                   }} />
                   <input type="tel" placeholder="Phone Number" style={{ 
                     padding: '14px 16px', 
                     borderRadius: '10px', 
-                    border: `1px solid ${colors.champagne}`,
-                    background: colors.softCream,
-                    color: colors.text,
+                    border: '1px solid rgba(166,39,174,0.3)',
+                    background: '#fafafa',
+                    color: '#333',
                     fontSize: '14px',
                   }} />
                   <textarea placeholder="Your Message" rows={4} style={{ 
                     padding: '14px 16px', 
                     borderRadius: '10px', 
-                    border: `1px solid ${colors.champagne}`,
-                    background: colors.softCream,
-                    color: colors.text,
+                    border: '1px solid rgba(166,39,174,0.3)',
+                    background: '#fafafa',
+                    color: '#333',
                     fontSize: '14px',
                     resize: 'none',
+                    outline: 'none',
                   }} />
+                  <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
                   <button style={{
-                    background: '#C2185B',
-                    color: colors.white,
-                    padding: '14px 24px',
-                    borderRadius: '10px',
-                    fontSize: '14px',
-                    fontWeight: 600,
+                    background: '#A627AE',
+                    color: '#fff',
+                    padding: '12px 28px',
+                    borderRadius: '30px',
+                    fontSize: '13px',
+                    fontWeight: 500,
                     border: 'none',
                     cursor: 'pointer',
                   }}>
                     Send Message
                   </button>
                 </div>
-              </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                  {[
-                    { icon: "📍", label: "Location", value: "Sylhet, Bangladesh" },
-                    { icon: "📧", label: "Email", value: "hello@femmebd.com" },
-                    { icon: "📞", label: "Phone", value: "+880 XXX XXXXXX" },
-                    { icon: "🕘", label: "Hours", value: "9AM - 5PM" },
-                  ].map((item, i) => (
-                    <div key={i} style={{ background: colors.white, padding: '16px', borderRadius: '12px' }}>
-                      <p style={{ fontSize: '12px', color: "#C2185B", marginBottom: '4px' }}>{item.icon} {item.label}</p>
-                      <p style={{ fontSize: '14px', color: colors.text }}>{item.value}</p>
-                    </div>
-                  ))}
-                </div>
-                
-                <div style={{ padding: '16px', background: 'rgba(255,255,255,0.1)', borderRadius: '12px', border: `1px solid ${colors.richGold}30` }}>
-                  <p style={{ fontSize: '14px', color: "#C2185B", marginBottom: '8px' }}>Cancellation Policy</p>
-                  <p style={{ fontSize: '13px', color: '#aaaaaa', lineHeight: 1.6 }}>
-                    Cancellations accepted up to 24 hours before your appointment.
-                  </p>
                 </div>
               </div>
             </div>

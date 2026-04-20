@@ -6,8 +6,8 @@ import Footer from '../../components/Footer';
 
 const colors = {
   dark: "#111111",
-  deepRose: "#C22DCC",
-  royalPink: "#C22DCC",
+  deepRose: "#A627AE",
+  royalPink: "#A627AE",
   richGold: "#D4AF37",
   softCream: "#FFF8F2",
   warmIvory: "#F8EFE7",
@@ -36,6 +36,15 @@ export default function About() {
     <>
       <Navbar />
       <main style={{ background: colors.softCream, color: colors.text }}>
+        <style>{`
+          @keyframes waveMove {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 25%; }
+            50% { background-position: 100% 75%; }
+            75% { background-position: 0% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}</style>
         {/* Hero Section - Dark */}
         <section ref={sectionRef} style={{
           minHeight: '60vh',
@@ -44,7 +53,7 @@ export default function About() {
           alignItems: 'center',
           justifyContent: 'center',
           overflow: 'hidden',
-          background: colors.dark,
+          background: '#000',
           paddingTop: '90px',
         }}>
           {/* Background */}
@@ -62,8 +71,9 @@ export default function About() {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'rgba(0,0,0,0.8)',
+            background: 'rgba(0,0,0,0.85)',
           }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 20%, rgba(166,39,174,0.08) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(166,39,174,0.04) 0%, transparent 50%)', backgroundSize: '200% 200%', animation: 'waveMove 10s ease-in-out infinite' }} />
           
           {/* Floating Elements */}
           <div style={{
@@ -129,14 +139,18 @@ export default function About() {
         </section>
 
         {/* Story Section - Two Column */}
-        <section style={{ padding: '100px 40px', background: colors.softCream }}>
+        <section style={{ padding: '100px 40px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #fff 0%, #fafafa 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 20% 30%, rgba(166,39,174,0.12) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(166,39,174,0.08) 0%, transparent 40%)', backgroundSize: '200% 200%', animation: 'waveMove 10s ease-in-out infinite' }} />
           <div style={{ 
             maxWidth: '1200px', 
             margin: '0 auto', 
             display: 'grid', 
             gridTemplateColumns: '1fr 1fr', 
             gap: '60px', 
-            alignItems: 'center' 
+            alignItems: 'center',
+            position: 'relative',
+            zIndex: 2
           }}>
             {/* Left - Images Grid */}
             <div style={{
@@ -145,30 +159,21 @@ export default function About() {
               gap: '16px',
             }}>
               <style>{`
-                @keyframes imgFloat {
-                  0%, 100% { transform: translateY(0) rotate(var(--rotate)); }
-                  50% { transform: translateY(-10px) rotate(var(--rotate)); }
-                }
-                @keyframes imgGlow {
-                  0%, 100% { box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
-                  50% { box-shadow: 0 8px 40px rgba(194,37,91,0.3), 0 0 20px rgba(212,175,55,0.2); }
-                }
                 .about-img {
-                  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                  animation: imgFloat 4s ease-in-out infinite, imgGlow 3s ease-in-out infinite;
+                  transition: transform 0.3s ease, box-shadow 0.3s ease;
                   cursor: pointer;
                 }
                 .about-img:hover {
-                  transform: translateY(-15px) rotate(0deg) scale(1.05) !important;
-                  box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(194,37,91,0.4) !important;
+                  transform: translateY(-8px) scale(1.02);
+                  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
                   z-index: 10;
                   position: relative;
                 }
-                .about-img:hover img {
-                  transform: scale(1.1);
-                }
                 .about-img img {
-                  transition: transform 0.4s ease;
+                  transition: transform 0.3s ease;
+                }
+                .about-img:hover img {
+                  transform: scale(1.05);
                 }
               `}</style>
               {[
@@ -340,7 +345,7 @@ export default function About() {
         </section>
 
         {/* Values Section - Dark */}
-        <section style={{ padding: '100px 40px', background: colors.dark, position: 'relative' }}>
+        <section style={{ padding: '60px 40px', background: colors.dark, position: 'relative' }}>
           <style>{`
             @keyframes cardFloat {
               0%, 100% { transform: translateY(0); }
