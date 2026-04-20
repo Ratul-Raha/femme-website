@@ -132,7 +132,7 @@ export default function Home() {
           background: 'url(/images/01.jpg) center/cover no-repeat',
           paddingTop: '90px',
         }}>
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.88) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.88) 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 30% 20%, rgba(166,39,174,0.08) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(166,39,174,0.04) 0%, transparent 50%)', backgroundSize: '200% 200%', animation: 'waveMove 10s ease-in-out infinite' }} />
           
           <div style={{
@@ -142,9 +142,9 @@ export default function Home() {
             zIndex: 2,
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
-            gap: '80px',
+            gap: '60px',
             alignItems: 'center',
-            padding: '120px 60px',
+            padding: '120px 0',
           }}>
             <div>
 <div style={{
@@ -213,23 +213,22 @@ export default function Home() {
 
 <div style={{
               position: 'relative',
-              height: '480px',
-              width: '400px',
+              height: '520px',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
+              justifyContent: 'flex-end',
             }}>
               {/* Sticky Notes Grid */}
               <div style={{
-                width: '380px',
-                height: '380px',
+                width: '420px',
+                height: '420px',
                 background: 'rgba(166,39,174,0.04)',
                 borderRadius: '20px',
                 padding: '15px',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gridTemplateRows: 'repeat(3, 1fr)',
-                gap: '8px',
+                gap: '10px',
                 border: '1px solid #A627AE30',
                 backdropFilter: 'blur(10px)',
               }}>
@@ -280,29 +279,10 @@ export default function Home() {
                       />
                     </div>
                   ))}
-              </div>
-              
-              {/* Floating Badges */}
-              {[
-                { text: "500+", label: "Clients", top: "-10px", right: "-10px" },
-                { text: "100%", label: "Natural", top: "5%", left: "-15px" },
-                { text: "4.9", label: "Rating", bottom: "-5px", right: "30px" },
-              ].map((item, i) => (
-                <div key={i} style={{
-                  position: 'absolute',
-                  ...item,
-                  background: '#fff',
-                  border: '1px solid #A627AE',
-                  borderRadius: '12px',
-                  padding: '12px 16px',
-                }}>
-                  <div style={{ fontSize: '20px', fontWeight: 600, color: '#A627AE' }}>{item.text}</div>
-                  <div style={{ fontSize: '10px', color: '#666', textTransform: 'uppercase' }}>{item.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+</div>
+             </div>
+           </div>
+         </section>
 
         {/* Royal Section Separator */}
         <section style={{ 
